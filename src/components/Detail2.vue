@@ -95,14 +95,15 @@ export default {
       const ret10 = await findHashList({locationhash})
       for (let i = 0; i < 25; i++) { // 해쉬태그 넣을때마다 숫자 바꿔주자..
         if (ret10.data[i].hash_name == locationhash) {
-          console.log(ret10.data[i].clicked)
+          // console.log(ret10.data[i].clicked)
           ret10.data[i].clicked = true
         }
         // this.hashs = ret10.data[i]
       }
       // search는 전체 for문
       this.hashs = ret10.data
-    } if (this.$route.query.locationhash != null || this.$route.query.searchhash != null) {
+    }
+      if (this.$route.query.locationhash != null || this.$route.query.searchhash != null) {
       var locationhash = null
       if (this.$route.query.locationhash != null) {
         locationhash = '#' + this.$route.query.locationhash
@@ -112,13 +113,15 @@ export default {
       }
       const ret11 = await findHashList2({locationhash})
       for (let i = 0; i < 2; i++) { // 해쉬태그 넣을때마다 숫자 바꿔주자..
-        if (ret11.data[i].hash_name == locationhash) {
+        if (ret11.data[i].hash_name == locationhash) { // 검색한 해쉬가 hash2의 이름과 같으면 clicked를 1로 바꿔줌
+          console.log(13233)
           ret11.data[i].clicked = 1
         }
         // this.hashs = ret10.data[i]
       }
       // search는 전체 for문
       this.hashs2 = ret11.data
+      console.log(ret11.data[1].clicked)
     } else {
       findHashList().then(response => this.hashs = response.data)
       findHashList2().then(response => this.hashs2 = response.data)
@@ -296,17 +299,17 @@ export default {
         }
       }
       // 지역 클릭된상태
-      else if (count == 1) {
+      else if (count == 1 ) {
         for (let k = 0; k < this.hashs2.length; k++) {
           // clicked을 기준으로 잡음, click된 요소가 몇개인지 확인
-          if (this.hashs2[k].clicked == true) {
+          if (this.hashs2[k].clicked == true ) {
             count_click += 1
           }
         }
         // 친구끼리 선택x
         if (count_click == 0) {
           for (let l = 0; l < this.hashs.length; l++) {
-            if (this.hashs[l].clicked == true) {
+            if (this.hashs[l].clicked == true ) {
               hash_name = this.hashs[l].hash_name
               var bb = await selectHashName({hash_name})
               ret3 = bb.data

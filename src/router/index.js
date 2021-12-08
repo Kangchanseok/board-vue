@@ -9,6 +9,8 @@ import Home from '@/components/Home'
 import Detail3 from '@/components/Detail3'
 import LocationDetail from '@/components/LocationDetail'
 import Mypage from '@/components/Mypage'
+import OauthRedirect from '@/components/oauth/Redirect'
+import IndexPage from '@/components/Index'
 
 
 Vue.use(Router)
@@ -18,6 +20,7 @@ export default new Router({
   scrollBehavior(to, from, savedPosition) {
     return {x:0, y:0};
   },
+  component: IndexPage,
   routes: [
     {
       path: '/',
@@ -64,6 +67,11 @@ export default new Router({
       name: 'Mypage',
       component: Mypage
     },
+    {
+      path: '/oauth/redirect',
+      name: 'OauthRedrect',
+      component: OauthRedirect
+    }
   ],
   // mode:'history'
   

@@ -42,6 +42,8 @@ export default {
       // 지도 router
         if (this.$route.query.hash_name != null) {
           this.locations = this.$route.query.hash_name
+          console.log(this.locations)
+          console.log(this.$route.query.hash_name)
           if(this.locations[0].hash_name == undefined){
             this.$router.push({
               path:'/detail3'
@@ -89,7 +91,7 @@ export default {
     },  
     mounted(){
       this.infiniteHandler()
-      this.$route.query.hash_name
+      // this.$route.query.hash_name
     },
     
     methods:{
@@ -107,7 +109,7 @@ export default {
             // }  
              if (this.busy === false ){
                
-              for (let i = this.locations.length  ; i <= this.locations.length + 3; i++){
+              for (let i = this.locations.length  ; i <= this.locations.length +2 ; i++){
                 this.locationsitems = res.data
                 if (this.locationsitems.length  === i || this.$route.query.hash_name != null|| this.ret2 != null ){
                   this.busy = true
