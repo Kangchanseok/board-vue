@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-18.04 
     steps:
-      - name: git clone
+      - name: 개시발
         uses: actions/checkout@v2
 
       - name: npm install
