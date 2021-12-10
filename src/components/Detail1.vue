@@ -58,7 +58,6 @@ export default {
       })
       // 중복 해시태그
       await EventBus.$on('changePage3', (ret3) =>{
-        console.log(ret3)
           this.locations = ret3;
       })
      
@@ -145,8 +144,8 @@ export default {
           }, 1000)
         }).catch(err => {
           console.error(err);
-        });
-      },
+      });
+    },
 
      async goDetail(loca_no, title){
       this.$router.push({
