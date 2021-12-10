@@ -263,6 +263,7 @@ export default {
             count_click += 1
           }
         }
+        console.log(count_click)
         // 클릭된 값이 0보다 클경우 무조건 들어옴
         if (count_click > 0) {
           // null 값이면 그냥 넣어줌 딱 한번만 들어옴
@@ -305,12 +306,9 @@ export default {
             var aa = await findLocationList()
             ret3 = aa.data
           }
-              if(count_click2 != 0){ // 지역 선택되어져 있으면 지역 데이터 렌더링 시키고
-                  ret3 = this.hashsdata;
-              } 
-              // else if (this.hashs[i].clicked == false) { // 지역 선택 x면 전체 렌더링
-              //     ret3 = await findLocationList();
-              // }
+            else if(count_click2 != 0){ // 지역 선택되어져 있으면 지역 데이터 렌더링 시키고
+                ret3 = this.hashsdata;
+            }
         }
       }
       // 지역 클릭된상태
