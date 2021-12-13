@@ -25,7 +25,7 @@ import {findLocationList, findHashName} from '../service';
 import EventBus from './EventBus'
 import InfiniteLoading from 'vue-infinite-loading'
 import axios from 'axios';
-const api = "http://127.0.0.1:3000/find/location_list";
+const api = "http://ec2-3-34-126-3.ap-northeast-2.compute.amazonaws.com:3000/find/location_list";
 
 
 export default {
