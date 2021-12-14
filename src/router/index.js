@@ -69,7 +69,7 @@ export default new Router({
     },
     {
       path: '/oauth/redirect',
-      name: 'OauthRedrect',
+      name: 'OauthRedirect',
       component: OauthRedirect
     }
   ],
