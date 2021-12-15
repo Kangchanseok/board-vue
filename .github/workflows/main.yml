@@ -1,4 +1,4 @@
-name: Main CI 
+name: Main CI  
 on:
   push:
     branches: [ master ]
@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: github action test
         uses: actions/checkout@v2
-
+      # npm i
       - name: npm install
         run: npm install 
 
@@ -26,3 +26,4 @@ jobs:
             --recursive \
             --region ap-northeast-2 \
             dist s3://vue-github-action-noolim
+            
