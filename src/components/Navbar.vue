@@ -11,8 +11,9 @@
         <li><router-link class="link" to="/">Home</router-link></li>
         <li><router-link class="link" to="/detail3">상세 검색</router-link></li>
         <li><router-link class="link" to="/board/free">고객센터</router-link></li>
-        <li><router-link class="link" to="/login">로그인</router-link></li>
-        <li><router-link class="link" to= "/mypage">마이페이지</router-link></li>
+        <li v-if="this.$store.state.account.token == null"><router-link class="link" to="/login">로그인</router-link></li>
+        <li v-if="this.$store.state.account.token != null"><router-link class="link" to= "/mypage">마이페이지</router-link></li>
+        <li v-if="this.$store.state.account.token != null"><router-link class="link" to="/">로그아웃</router-link></li>
       </ul>
       <div class="icon">
         <i @click="toggleMobileNav" v-show="mobile" class="far fa-bars" :class="{'icon-active' : mobileNav }"></i>
