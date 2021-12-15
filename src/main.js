@@ -4,7 +4,7 @@ import Vue from 'vue'
 import { BootstrapVue, IconsPlugin} from 'bootstrap-vue'
 import App from './App'
 import router from './router'
-import store from "./store";
+import store from "./store/index";
 import naver from 'vue-naver-maps'
 import axios from 'axios'
 

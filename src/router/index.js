@@ -11,6 +11,7 @@ import LocationDetail from '@/components/LocationDetail'
 import Mypage from '@/components/Mypage'
 import OauthRedirect from '@/components/oauth/Redirect'
 import IndexPage from '@/components/Index'
+import Logout from '@/components/Logout'
 
 
 Vue.use(Router)
@@ -71,7 +72,12 @@ export default new Router({
       path: '/oauth/redirect',
       name: 'OauthRedirect',
       component: OauthRedirect
-    }
+    },
+    {
+      path:'/logout',
+      name: 'Logout',
+      component: Logout
+    },
   ],
   mode:'history'
   
