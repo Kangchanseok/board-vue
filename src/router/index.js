@@ -73,7 +73,7 @@ export default new Router({
       component: OauthRedirect
     }
   ],
-  // mode:'history'
+  mode:'history'
   
 });
 

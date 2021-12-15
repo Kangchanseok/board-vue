@@ -4,7 +4,7 @@ import Vue from 'vue'
 import { BootstrapVue, IconsPlugin} from 'bootstrap-vue'
 import App from './App'
 import router from './router'
-import {store} from "./store";
+import store from "./store";
 import naver from 'vue-naver-maps'
 import axios from 'axios'
 
@@ -14,8 +14,8 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 
 Vue.config.productionTip = false
-const BACKEND_PORT = process.env.BACKEND_PORT === null ? '' : `:8080`
-const BACKEND_DOMAIN = process.env.BACKEND_DOMAIN === null ? `${location.protocol}//${location.hostname}` : process.env.BACKEND_DOMAIN
+const BACKEND_PORT = process.env.BACKEND_PORT 
+const BACKEND_DOMAIN = process.env.BACKEND_DOMAIN 
 axios.defaults.baseURL = `ec2-13-125-140-17.ap-northeast-2.compute.amazonaws.com:8080`
 
 
@@ -33,7 +33,7 @@ Vue.use(naver, {
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  store: store,
+  store,
   router,
   components: { App },
   template: '<App/>'

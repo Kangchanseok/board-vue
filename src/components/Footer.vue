@@ -5,10 +5,10 @@
          <span>Useful Links</span>
           <ul>
               <li class="list"><a href="/">HOME</a></li>
-              <li class="list"><a href="/#/detail3">상세검색</a></li>
-              <li class="list"><a href="/#/board/free">고객센터</a></li>
-              <li class="list"><a href="/#/login">로그인</a></li>
-              <li class="list"><a href="/#/mypage">마이페이지</a></li>
+              <li class="list"><a href="/detail3">상세검색</a></li>
+              <li class="list"><a href="/board/free">고객센터</a></li>
+              <li class="list"><a href="/login">로그인</a></li>
+              <li class="list"><a href="/mypage">마이페이지</a></li>
           </ul>
 
       </p>
