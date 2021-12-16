@@ -30,13 +30,13 @@ export default {
   },
   data() {
     return {
-      name: "강찬석",
+      name: this.$store.state.account.user.username,
       context: "",
     };
   },
   methods: {
     async createComment() {
-      await addComment({user_no:1,
+      await addComment({user_no:this.$store.state.account.user.userId,
        content_no:this.contentNo,
        context:this.context
         })

@@ -34,7 +34,7 @@ export default {
     return {
       subject: '',
       context: '',
-      userNo: 1,
+      userNo: this.$store.state.account.user.userId,
       regdate: '',
       content_no: Number(this.$route.params.contentNo),
       updateMode: this.$route.params.contentNo > 0 ? true : false

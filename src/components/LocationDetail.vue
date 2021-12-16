@@ -137,7 +137,7 @@ export default {
         
     },
     data(){
-      const locaNo = Number(this.$route.params.locaNo);
+      const locaNo = Number(this.$route.query.loca_no);
         return{
             width: 700,
         height: 700,

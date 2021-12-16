@@ -86,9 +86,10 @@ export default {
   // },
   data() {  
     return {
-      name: data.User.filter(
-        item => item.user_no === this.commentObj.user_no
-      )[0].name,
+      // name: data.User.filter(
+      //   item => item.user_no === this.commentObj.user_no
+      // )[0].name,
+      name: this.$store.state.account.user.username,
       subCommentList: [],
       subCommentCreateToggle: false,
       modifyCreateToggle: false,

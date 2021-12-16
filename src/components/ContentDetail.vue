@@ -1,7 +1,7 @@
 <template>
   <div class="all-all">
     <br/>
-    <a class="btn btn-primary" href="/#/board/free">목록으로</a>
+    <a class="btn btn-primary" href="/board/free">목록으로</a>
     <b-container>
       <br/>
     <b-card class="card-all">
@@ -62,7 +62,7 @@ export default {
       const {data} = ret;
       this.title = data.title;
       this.context = data.context;
-      this.user = data.user_name;
+      this.user = data.username;
       this.regdate = data.regdate;
       // this.comment_no = data.comment_no;
   },

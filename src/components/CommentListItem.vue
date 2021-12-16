@@ -83,15 +83,16 @@ export default {
     CommentCreate    
   },
  
-  async created(){
-    const ret = await findSubComment({comment_no});
-    this.subCommentList = ret.data;
-  },
+  // async created(){
+  //   const ret = await findSubComment({comment_no});
+  //   this.subCommentList = ret.data;
+  // },
   data() {  
     return {
-      name: data.User.filter(
-        item => item.user_no === this.commentObj.user_no
-      )[0].name,
+      // name: this.$store.state.account.user.filter(
+      //   item => item === this.commentObj.user_no
+      // )[0].name,
+      name: this.$store.state.account.user.username,
       subCommentList: [],
       subCommentCreateToggle: false,
       modifyCreateToggle: false,

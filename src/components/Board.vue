@@ -53,7 +53,7 @@ export default {
           label: '등록일'
         },
         {
-          key: 'user_name',
+          key: 'username',
           label: '작성자'
         },
       ],
