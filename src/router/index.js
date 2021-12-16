@@ -12,15 +12,25 @@ import Mypage from '@/components/Mypage'
 import OauthRedirect from '@/components/oauth/Redirect'
 import IndexPage from '@/components/Index'
 import Logout from '@/components/Logout'
+import store from '../store/index'
 
 
 Vue.use(Router)
+
+// vuex 토큰 없을시 라우터 접근 금지 
+const requireAuth = () => (to, from, next) =>{
+  if (store.state.account.token != null){
+    return next();
+  }
+  next('/login');
+};
 
 export default new Router({
 
   scrollBehavior(to, from, savedPosition) {
     return {x:0, y:0};
   },
+  mode:'history',
   component: IndexPage,
   routes: [
     {
@@ -41,7 +51,8 @@ export default new Router({
     {
       path: '/board/free',
       name: 'Board',
-      component: Board
+      component: Board,
+      beforeEnter: requireAuth()
     },
     {
       path: '/detail3',
@@ -51,12 +62,14 @@ export default new Router({
     {
       path: '/board/free/detail/:contentNo',
       name: 'ContentDetail',
-      component: ContentDetatil
+      component: ContentDetatil,
+      beforeEnter: requireAuth()
     },
     {
       path: '/board/free/create/:contentNo?',
       name: 'Create',
-      component: Create
+      component: Create,
+      beforeEnter: requireAuth()
     },
     {
       path: '/detail3/locationdetail', // /:locaNo
@@ -66,7 +79,8 @@ export default new Router({
     {
       path: '/mypage',
       name: 'Mypage',
-      component: Mypage
+      component: Mypage,
+      beforeEnter: requireAuth()
     },
     {
       path: '/oauth/redirect',
@@ -79,7 +93,7 @@ export default new Router({
       component: Logout
     },
   ],
-  mode:'history'
+  
   
 });
 
