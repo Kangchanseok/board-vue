@@ -38,8 +38,10 @@
       </div>
 
       <div class="content-detail-button">
-        <b-button variant="outline-success" @click="updateData">수정</b-button>
-        <b-button variant="outline-danger" @click="deleteData">삭제</b-button>
+        <b-button variant="outline-success" 
+        @click="dbId == storeId ? updateData() : notCorrectMsg()">수정</b-button>
+        <b-button variant="outline-danger" 
+        @click="dbId == storeId ? deleteData(): notCorrectMsg()">삭제</b-button>
       </div>
       <div class="content-detail-comment">
         <CommentList :contentNo="contentNo"/>
@@ -64,6 +66,8 @@ export default {
       this.context = data.context;
       this.user = data.username;
       this.regdate = data.regdate;
+      this.dbId = data.user_id;
+      this.storeId = this.$store.state.account.user.userId
       // this.comment_no = data.comment_no;
   },
   data() {
@@ -74,10 +78,15 @@ export default {
       context:'', 
       user:'', 
       regdate:'' ,
+      dbId: '',
+      storeId: ''
       // comment_no : ''
     };
   },
   methods: {
+    notCorrectMsg(){
+       alert('권한이 존재하지 않습니다.')
+     },
     async deleteData() {
       alert('글을 삭제합니다');
        await deleteContent({content_no: this.contentNo}),
