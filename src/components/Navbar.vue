@@ -8,7 +8,7 @@
        </router-link>
       </div>
       <ul v-show="!mobile" class="navigation">
-        <div v-if="this.$store.state.account.token != null" class="blank"> 안녕하세요 찬석님</div>
+        <div v-if="this.$store.state.account.token != null" class="blank"> 안녕하세요 {{this.$store.state.account.user.username}}님 </div>
         <li><router-link class="link" to="/">Home</router-link></li>
         <li><router-link class="link" to="/detail3">상세 검색</router-link></li>
         <li><router-link class="link" to="/board/free">고객센터</router-link></li>

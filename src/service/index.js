@@ -193,3 +193,9 @@ export const addContent = ({ user_no, title, context }) => {
       params: { title }
     });
   };
+
+  export const getusername = ({ token }) => {
+    return axios.get("http://ec2-3-34-126-3.ap-northeast-2.compute.amazonaws.com:3000/find/username", {
+      params: { token }
+    });
+  };

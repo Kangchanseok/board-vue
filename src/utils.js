@@ -1,7 +1,7 @@
-const BACKEND_PORT = process.env.BACKEND_PORT 
-const BACKEND_URL = `ec2-13-125-140-17.ap-northeast-2.compute.amazonaws.com:8080`
-const FRONTEND_PORT = process.env.FRONTEND_PORT 
-const REDIRECT_URI = `ec2-3-34-126-3.ap-northeast-2.compute.amazonaws.com:8082/oauth/redirect`
+const BACKEND_PORT = process.env.BACKEND_PORT === null ? '' : `:${process.env.BACKEND_PORT}`
+const BACKEND_URL = `http://ec2-13-125-140-17.ap-northeast-2.compute.amazonaws.com:8080`
+const FRONTEND_PORT = process.env.FRONTEND_PORT === null ? '' : `:${process.env.FRONTEND_PORT}`
+const REDIRECT_URI = `http://ec2-3-34-126-3.ap-northeast-2.compute.amazonaws.com:8082/oauth/redirect`
 
 export default {
   getSocialLoginUrl (socialType) {

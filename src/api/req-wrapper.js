@@ -1,5 +1,5 @@
 import axios from 'axios'
-import store from '../store/index'
+import store from '../store'
 import handler from './res-handler'
 
 const URI_PREPENDER = '/api/v1'
