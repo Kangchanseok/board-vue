@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import {findLocationList, findHashName, selectheart} from '../service';
+import {findLocationList, findHashName} from '../service';
 import EventBus from './EventBus'
 import InfiniteLoading from 'vue-infinite-loading'
 import axios from 'axios';

@@ -3,7 +3,6 @@
 
 <script>
 import { mapMutations, mapActions } from 'vuex'
-import { getusername } from '../../service'
 
 export default {
   async created () {
@@ -14,7 +13,6 @@ export default {
       this.setToken(token)
       this.fetchUser()
     }
-    console.log(await getusername({token}))
     this.$router.replace('/')
   },
   methods: {
