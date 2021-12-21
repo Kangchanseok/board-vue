@@ -9,10 +9,8 @@
            height="320"
            width="350"
           @click="goDetail(location.loca_no, location.title)">
-          <h3 class="test-loc-title" @click="goDetail(location.loca_no, location.title)">{{location.title}}</h3>
-          <p class="test-test" @click="goDetail(location.loca_no, location.title)">{{ location.hash_name }}</p>
 
-           <!-- 좋아요 버튼 -->
+          <!-- 좋아요 버튼 -->
           <button class="like"  v-on:click="like(location)"> 
         <svg class="heart"  id="heart" xmlns="http://www.w3.org/2000/svg" 
             width="20"  viewBox="0 0 32 31"><title>heart</title><g  stroke-width="2">
@@ -21,11 +19,16 @@
             stroke-linecap="round" stroke-linejoin="round" :style="location.liked === true ? {'fill': 'red'} : null"></path></g></svg>
         <span></span>
           </button>
+
+          <h3 class="test-loc-title" @click="goDetail(location.loca_no, location.title)">{{location.title}}</h3>
+          <p class="test-test" @click="goDetail(location.loca_no, location.title)">{{ location.hash_name }}</p>
+
+           
       </div>
     </div>
     <infinite-loading @infinite="infiniteHandler" spinner="bubbles">
-      <div slot="no-more" style="color:rgb(102,102,102); font-size: 14px; padding: 10px 0px;">No More Data :)</div>
-      <div slot="no-results" style="color:rgb(102,102,102); font-size: 14px; padding: 10px 0px;">결과가 없어용 ㅠㅠ</div>
+      <h1 slot="no-more" style="color:rgb(102,102,102); font-size: 20px; margin: 150px; padding: 25px 0px;">No More Data :)</h1>
+      <h1 slot="no-results" style="color:rgb(102,102,102); font-size: 14px; padding: 10px 0px;">결과가 없어용 ㅠㅠ</h1>
     </infinite-loading>
   </div>  
 </template>
@@ -43,9 +46,11 @@ export default {
     
 
     async created(){
+      if ( this.$store.state.account.user!= null){
       var user = this.$store.state.account.user.userId
       var test = await selectheart({user})
       this.test = test.data
+      }
       // created 초기값 지우면 무한반복은 안됨
       // 대신 지우면 null값이 들어간 요소가 하나 나옴
       // 지도나 검색창으로 이동시 기존데이터와 무한스크롤같이 나옴
@@ -270,13 +275,15 @@ button {
   color: rgba(0,0,0,0.7);
 }
 button {
+  margin:0;
   background: none;
   font: inherit;
-  padding: 0.3em 1em;
+  padding: 0.8em 1em;
   display:flex;
   align-items:center;
   transition:0.1s ease;
   border: 0;
+  float: right;
 }
 
 .gallery {
@@ -312,7 +319,7 @@ button {
 .test-loc-title{
     color: #000000;
     font-size: 25px;
-    max-width: 100%;
+    max-width: 80%;
     overflow: hidden;
     margin: 0;
     text-align: left;
@@ -344,7 +351,4 @@ button {
     padding-left: 90px;
 }
 }
-/* h3 {
-    display: inline-block;
-} */
 </style>

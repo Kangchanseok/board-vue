@@ -1,213 +1,25 @@
 <template>
-  <hooper :infiniteScroll="true" :settings="hooperSettings"
-   >
 
-  <!-- 1 -->
-  <slide >
+
+  <hooper :infiniteScroll="true" :settings="hooperSettings">
+   
+  <slide v-for="(slide,i) in slides" :key="i">
     <div id="hero-slides">
-      <!-- <div id="slides-cont"> -->
       <div id="slides">
-        <div class="slide" style="background-image: url(https://i.postimg.cc/k5w2g7kY/Gyeonghuigung.jpg)">
-              
-             <!-- 좋아요  -->  
-            <!-- <div class="container-heart">
-                  <li v-for="like in likes" :key="like.id">
-                    <label>
-                      <input type="checkbox"
-                        v-on:change="toggle(like)"
-                        v-bind:checked="like.done">
-
-                      <del v-if="like.done">
-                        {{ like.text }}
-                        ❤️&nbsp;&nbsp;
-                        {{ like.count1 + 1 }}
-                      </del>
-                      <span v-else>
-                        {{ like.text }}
-                        🤍&nbsp;&nbsp;
-                        {{ like.count1 }}
-                      </span>
-                    </label>
-                  </li>
-            </div> -->
-
-
-          <div class="number">01</div>
+        <div class="slide" v-bind:style="{'background-image' : 'url(' + slide.picture1 + ')'}">
+          <div class="number">{{i+1}}</div>
           <div class="body">            
-            <div class="location">Photo by Bundo Kim</div>
-            <div class="headline" >경희궁,<br>종로구 새문안로 45 </div>
-              <div class="link"  @click="gogo">클릭시 이동합니다.</div>
+            <div class="location">{{slide.context1}}</div>
+            <div class="headline" >{{slide.title}}<br></div>
+              <div class="link"  @click="gogo(slide.loca_no, slide.title)">클릭시 이동합니다</div>
           </div>
         </div>
       </div>
-    <!-- </div> -->
     </div>
   </slide>
 
-<!-- 2 -->
-  <slide>
-    <div id="hero-slides">
-      <!-- <div id="slides-cont"> -->
-      <div id="slides">
-    <div class="slide" style="background-image: url(https://i.postimg.cc/635Gr8rN/Deoksugung.jpg)">
-
-      
-    <!-- <div class="container-heart">
-          <li v-for="like in likes" :key="like.id">
-            <label>
-              <input type="checkbox"
-                v-on:change="toggle(like)"
-                v-bind:checked="like.done">
-
-              <del v-if="like.done">
-                {{ like.text }}
-                ❤️&nbsp;&nbsp;
-                {{ like.count2 + 1 }}
-              </del>
-              <span v-else>
-                {{ like.text }}
-                🤍&nbsp;&nbsp;
-                {{ like.count2 }}
-              </span>
-            </label>
-          </li>
-    </div> -->
-
-          <div class="number">02</div>
-          <div class="body">
-            <div class="location">Photo by SeongPhil Jang</div>
-            <div class="headline">덕수궁,<br>중구 정동 세종대로 99</div>
-              <div class="link"  @click="gogo">클릭시 이동합니다.</div>
-          </div>
-        </div>
-      </div>
-    <!-- </div> -->
-    </div>
-  </slide>
-
-<!-- 3 -->
-  <slide >
-    <div id="hero-slides" >
-      <!-- <div id="slides-cont"> -->
-  <div>
-    <div id="slides">
-    <div class="slide" style="background-image: url(https://i.postimg.cc/W15D2NRW/cait-ellis-Erld-XTq-Xv0-unsplash.jpg)">
 
 
-    <!-- <div class="container-heart">
-          <li v-for="like in likes" :key="like.id">
-            <label>
-              <input type="checkbox"
-                v-on:change="toggle(like)"
-                v-bind:checked="like.done">
-
-              <del v-if="like.done">
-                {{ like.text }}
-                ❤️&nbsp;&nbsp;
-                {{ like.count3 + 1 }}
-              </del>
-              <span v-else>
-                {{ like.text }}
-                🤍&nbsp;&nbsp;
-                {{ like.count3 }}
-              </span>
-            </label>
-          </li>
-    </div> -->
-
-          <div class="number">03</div>
-          <div class="body">
-            <div class="location">Incheon, South Korea</div>
-            <div class="headline">Photo by Steve Roe</div>
-              <div class="link"  @click="gogo">클릭시 이동합니다.</div>          
-          </div>
-        </div>
-  </div>
-  </div>
-    <!-- </div> -->
-    </div>
-  </slide>
-
-<!-- 4 -->
-  <slide>
-    <div id="hero-slides">
-      <!-- <div id="slides-cont"> -->
-      <div id="slides">
-    <div class="slide" style="background-image: url(https://i.postimg.cc/fTwTkGf6/robson-hatsukami-morgan-ku9-Ftte6-Ymo-unsplash.jpg)">
-
-    <!-- <div class="container-heart">
-          <li v-for="like in likes" :key="like.id">
-            <label>
-              <input type="checkbox"
-                v-on:change="toggle(like)"
-                v-bind:checked="like.done">
-
-              <del v-if="like.done">
-                {{ like.text }}
-                ❤️&nbsp;&nbsp;
-                {{ like.count4 + 1 }}
-              </del>
-              <span v-else>
-                {{ like.text }}
-                🤍&nbsp;&nbsp;
-                {{ like.count4 }}
-              </span>
-            </label>
-          </li>
-    </div> -->
-
-          <div class="number">04</div>
-          <div class="body">
-            <div class="location">Wan Chai, Hong Kong</div>
-            <div class="headline">Photo by Sean Foley</div>
-              <div class="link"  @click="gogo">클릭시 이동합니다.</div>       
-          </div>
-
-        </div>
-      </div>
-    <!-- </div> -->
-    </div>
-  </slide>
-
-<!-- 5 -->
-  <slide>
-    <div id="hero-slides">
-      <!-- <div id="slides-cont"> -->
-    <div id="slides">
-    <div class="slide" style="background-image: url(https://images.unsplash.com/photo-1624079569473-fbb97980a4f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80)">
-
-    <!-- <div class="container-heart">
-          <li v-for="like in likes" :key="like.id">
-            <label>
-              <input type="checkbox"
-                v-on:change="toggle(like)"
-                v-bind:checked="like.done">
-
-              <del v-if="like.done">
-                {{ like.text }}
-                ❤️&nbsp;&nbsp;
-                {{ like.count5 + 1 }}
-              </del>
-              <span v-else>
-                {{ like.text }}
-                🤍&nbsp;&nbsp;
-                {{ like.count5 }}
-              </span>
-            </label>
-          </li>
-    </div> -->
-          <div class="number">05</div>
-          <div class="body">
-            <div class="location">Photo by Luminos film</div>
-            <div class="headline">롯데타워,<br> 송파구 올림픽로 300</div>
-              <div class="link"  @click="gogo">클릭시 이동합니다.</div>
-          </div>
-    </div>
-        </div>
-    <!-- </div> -->
-    </div>
-        
-  </slide>
   
   <hooper-navigation slot="hooper-addons"></hooper-navigation>
   <hooper-pagination slot="hooper-addons"></hooper-pagination>
@@ -222,15 +34,25 @@ import {Hooper,
   }
    from "hooper";
 import 'hooper/dist/hooper.css';
+import {getRandom} from '../service'
+
 export default {
+  async created(){
+  const ret = await getRandom()
+  this.slides = ret.data
+},
     components: {
         Hooper,
         Slide,
         HooperNavigation,
         HooperPagination
 },
+
 data(){
     return {
+      slides: [
+        
+      ],
         hooperSettings: {
             itemsToShow : 5,
             centerMode: true,
@@ -249,14 +71,29 @@ data(){
           done: false,
         },
       ],
+      random: [
+        {
+          loca_no:'',
+          title:'',
+          picture1:'',
+          context1:''
+
+        }
+
+      ],
     };
 },
+
 methods:{
-  gogo(){
-    this.$router.push({
-      path: "/detail3/locationdetail/1"
+  gogo(loca_no, title){
+      this.$router.push({
+        name: 'LocationDetail',
+        query: {
+          loca_no: loca_no,
+          title: title
+        }      
       })
-    },
+      },
     toggle: function(like){
       like.done =!like.done;
       count = count + 1;
@@ -621,10 +458,10 @@ background-color: blue;
     font-size: 0.75vw;
     height: 565px;
   }
-  #hero-slides {
+  /* #hero-slides { */
     /* background: linear-gradient(0deg, #7bc4c4 0%, #7bc4c4 0%); */
     /* background: #7bc4c4; */
-  }
+  /* } */
  
 }
 @media (min-width: 1801px) {

@@ -3,7 +3,7 @@
     <div :key="item.comment_no" v-for="item in comments">
       <LocationCommentListItem :commentObj="item"/>
     </div>
-    <LocationCommentCreate :locaNo="locaNo" :reloadComments="reloadComments" />
+    <LocationCommentCreate  :locaNo="locaNo" :reloadComments="reloadComments" />
   </div>
 </template>
 

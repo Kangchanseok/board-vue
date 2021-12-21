@@ -93,9 +93,9 @@
   font-family: 'Nanum Gothic', sans-serif;
 }
 .blank{
-  margin-right: 550px;
-  font-size: 25px;
-  background-color: black;
+  margin: 0 20% 0 30%;
+  font-size: 18px;
+  /* background-color: black; */
 }
 nav {
   padding: 10px 0;

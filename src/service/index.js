@@ -254,3 +254,8 @@ export const addContent = ({ user_no, title, context }) => {
       user_id
     });
   };
+
+   // 랜덤 게시물
+   export const getRandom = () => {
+    return axios.get("http://ec2-3-34-126-3.ap-northeast-2.compute.amazonaws.com:3000/getrandom");
+  };

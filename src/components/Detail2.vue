@@ -33,7 +33,7 @@
 
          <div class="tag-container2"
             v-for="(hash2, j) in hashs2"
-            :key="j"
+            :key="'a'+j"
             >
         <div class="contents-tag2">
             <ul class="area2" id="region2">
@@ -199,11 +199,24 @@ export default {
             }
           }
           console.log(countcheck)
-          ret3 = [...new Set(this.hashsdata2.map(JSON.stringify))].map(JSON.parse)
-          ret2 = ret3
-          if (countcheck != null && this.hashsdata2.length == 0) {
-            hash_name = countcheck
-            ret2 = await selectHashName({hash_name})
+
+          // ret3 = [...new Set(this.hashsdata2.map(JSON.stringify))].map(JSON.parse)
+          // ret2 = ret3
+
+          if (countcheck != null) {
+            this.hashsdata2 = []
+            for(let i = 0; i < countcheck.length; i++){
+            hash_name = countcheck[i]
+            console.log(hash_name)
+            justcount = await selectHashName({hash_name})
+            for (let m = 0; m < justcount.data.length; m++) {
+              this.hashsdata2.push(justcount.data[m])
+            }
+            }
+          }
+          if (justcount.length != 0) {
+            ret3 =[...new Set(this.hashsdata2.map(JSON.stringify))].map(JSON.parse)
+            ret2 = ret3
             console.log(ret2)
           }
           // }
@@ -222,6 +235,7 @@ export default {
         var test1 = new Set(ret2) // todo: detail3에서 지역 옮기고 중복태그 클릭했다가 해제시 에러 해결
         ret2 = [...test1]
         this.hashsdata = ret2
+        if (this.$store.state.account.user != null){
         var user = this.$store.state.account.user.userId
         var clickheart = await selectheart({user})
         for (let i = 0; i < ret2.length; i++) {
@@ -232,11 +246,13 @@ export default {
             }
           }
         }
+        }
         EventBus.$emit('changePage', ret2)
       } else if (ret3.length == 0 ) {
         var test2 = new Set(ret2.data)
         ret2.data = [...test2]
         this.hashsdata = ret2.data
+        if (this.$store.state.account.user != null){
         var user = this.$store.state.account.user.userId
         var clickheart2 = await selectheart({user})
         console.log(clickheart2.data.length)
@@ -247,6 +263,7 @@ export default {
               ret2.data[i].like_color = 'red'
             }
           }
+        }
         }
         EventBus.$emit('changePage', ret2.data)
       }
@@ -419,6 +436,7 @@ export default {
           }
         }
       }
+      if (this.$store.state.account.user != null){
       var user = this.$store.state.account.user.userId
         var clickheart3 = await selectheart({user})
         for (let i = 0; i < ret3.length; i++) {
@@ -429,7 +447,7 @@ export default {
             }
           }
         }
-        console.log(12312313123)
+      }
         // TODO : 중복제거, 여기에는 없는데 서버파일에는 있네ㅋㅋㅋ
         // 서버에서 실행해보고 에러나면 고치기
       EventBus.$emit('changePage3', ret3)

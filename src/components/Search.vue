@@ -8,7 +8,7 @@
           <input 
             type="text"
             class="s"
-            placeholder="'#'을 입력하세요"
+            placeholder="'#'을 입력해보세요!"
             v-on:input="searchQuery=$event.target.value"
             @keyup.enter="onSubmit($event.target.value)"
             />
