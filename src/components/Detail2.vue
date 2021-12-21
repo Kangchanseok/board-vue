@@ -15,7 +15,7 @@
                 <li >
                     <button type="button"
                     @click="[changeColor(hash.hash_no, $event),changePage(hash.hash_name)]"
-                    :style="hash.clicked === true ? { 'background-color': '#7bc4c4', 'color' : 'white' } : null"
+                    :style="hash.clicked === true ? { 'background-color': 'black', 'color' : 'white' } : null"
                     >
                     {{hash.hash_name}}
                     <!-- v-bind:class="[index.isClicked ? 'select': '']" -->
@@ -28,7 +28,8 @@
             </ul>
             </div>
         </div>
-        <br/><br/><br/>
+        <br/><br/>
+        <div></div>
 
          <div class="tag-container2"
             v-for="(hash2, j) in hashs2"
@@ -39,7 +40,7 @@
                 <li >
                     <button type="button"
                     @click="[changeColor2(hash2.hash_no, $event),changePage3(hash2.hash_name)]"
-                    :style="hash2.clicked === 1 ? { 'background-color': '#7bc4c4', 'color' : 'white' } : null"
+                    :style="hash2.clicked === 1 ? { 'background-color': 'black', 'color' : 'white' } : null"
                     >
                     {{hash2.hash_name}}
                     <!-- v-bind:class="[index.isClicked ? 'select': '']" -->
@@ -57,7 +58,7 @@
 </template>
 
 <script>
-import {findHashList, findHashList2, selectHashName, findLocationList} from '../service'
+import {findHashList, findHashList2, selectHashName, findLocationList, selectheart} from '../service'
 import EventBus from './EventBus'
 
 export default {
@@ -113,14 +114,13 @@ export default {
         locationhash = this.$route.query.searchhash
       }
       const ret11 = await findHashList2({locationhash})
-      for (let i = 0; i < 2; i++) { // 해쉬태그 넣을때마다 숫자 바꿔주자..
+      for (let i = 0; i < 14; i++) { // 해쉬태그 넣을때마다 숫자 바꿔주자..
         if (ret11.data[i].hash_name == locationhash) { // 검색한 해쉬가 hash2의 이름과 같으면 clicked를 1로 바꿔줌
           ret11.data[i].clicked = 1
         }
       }
       // search는 전체 for문
       this.hashs2 = ret11.data
-      console.log(ret11.data[1].clicked)
     } else {
       findHashList().then(response => this.hashs = response.data)
       findHashList2().then(response => this.hashs2 = response.data)
@@ -217,16 +217,37 @@ export default {
       } else if (count == 1 && check_hash == 0) { // 4. 지역만 선택되었을경우
         ret2 = await selectHashName({hash_name})
       }
+
       if (ret3.length != 0 ) {
         var test1 = new Set(ret2) // todo: detail3에서 지역 옮기고 중복태그 클릭했다가 해제시 에러 해결
         ret2 = [...test1]
         this.hashsdata = ret2
-        console.log(this.hashsdata)
+        var user = this.$store.state.account.user.userId
+        var clickheart = await selectheart({user})
+        for (let i = 0; i < ret2.length; i++) {
+          for (let j = 0; j < clickheart.data.length; j++) {
+            if (ret2[i].title == clickheart.data[j].title) {
+              ret2[i].liked = true
+              ret2[i].like_color = 'red'
+            }
+          }
+        }
         EventBus.$emit('changePage', ret2)
       } else if (ret3.length == 0 ) {
         var test2 = new Set(ret2.data)
         ret2.data = [...test2]
         this.hashsdata = ret2.data
+        var user = this.$store.state.account.user.userId
+        var clickheart2 = await selectheart({user})
+        console.log(clickheart2.data.length)
+        for (let i = 0; i < ret2.data.length; i++) {
+          for (let j = 0; j < clickheart2.data.length; j++) {
+            if (ret2.data[i].title == clickheart2.data[j].title) {
+              ret2.data[i].liked = true
+              ret2.data[i].like_color = 'red'
+            }
+          }
+        }
         EventBus.$emit('changePage', ret2.data)
       }
     },
@@ -242,6 +263,8 @@ export default {
       var count_click2 = 0
       var check2 = []
       var check = []
+      var check_hashs2 = 0
+
       var ret2 = await selectHashName({hash_name}) // 가족끼리 데이터 가져옴
       // hashsdata --> 지역해시태그 정보 담고있음
       // hashs2 --> 친구끼리 ~~ 가족끼리 해시태그
@@ -396,6 +419,19 @@ export default {
           }
         }
       }
+      var user = this.$store.state.account.user.userId
+        var clickheart3 = await selectheart({user})
+        for (let i = 0; i < ret3.length; i++) {
+          for (let j = 0; j < clickheart3.data.length; j++) {
+            if (ret3[i].title == clickheart3.data[j].title) {
+              ret3[i].liked = true
+              ret3[i].like_color = 'red'
+            }
+          }
+        }
+        console.log(12312313123)
+        // TODO : 중복제거, 여기에는 없는데 서버파일에는 있네ㅋㅋㅋ
+        // 서버에서 실행해보고 에러나면 고치기
       EventBus.$emit('changePage3', ret3)
     },
 
@@ -441,49 +477,82 @@ export default {
 </script>
 
 <style scoped>
-
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap'); 
+* {
+  font-family: 'Nanum Gothic', sans-serif;
+ 
+  
+}
 .hashtag{
     background-color: rgb(243, 243, 243);
     border-radius: 10px;
     padding: 8px;
+    /* display: block; */
+    /* -webkit-box-pack: end; */
+    /* -ms-flex-pack: end; */
+    /* justify-content: flex-end; */
     position: absolute;
-    left: 1200px;
-    top: 300px;
-
+    left: 1100px;
+    top: 400px;
     display: grid;
     grid-template-columns:  1fr 1fr 1fr;
+    margin: 0 auto;
+    
+    max-width: 100%;
+    max-height: 100%;
 }
-
-.contents-tag li button {
-    padding: 7px 20px;
-    /* border-top-left-radius: 35px;
+.hashtag li button {
+  
+    padding: 7px 3px;
+    border-top-left-radius: 35px;
     border-top-right-radius: 35px;
     border-bottom-left-radius: 35px;
-    border-bottom-right-radius: 35px; */
+    border-bottom-right-radius: 35px;
     border:none;
+    width: 80px
 }
-
 ul{
     display: block;
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+    
+    
+    
 }
-
 li{
     list-style: none;
+    /* margin: 0 auto; */
+    
 }
-
-.btn{
+button{
     border: 0 none;
     cursor: pointer;
-
+    background-color: rgb(243, 243, 243);
+    display: block;
+    font-weight: bold;
+    
 }
-.btn:hover{
+button:hover{
     color: #ffffff;
     background-color: #7bc4c4;
 }
-.btn{
-    background-color: #7bc4c4;
+/* .line3{
+  border: 1px solid rgb(207, 207, 207);
+  
+} */
+@media (min-width: 1801px) and (max-width: 2649px){
+    .hashtag{
+    left: 1550px;
+    top: 450px;
+
+ }
 }
-.active {
-    color: blue
+@media (max-width: 1800px){ 
+  .hashtag{
+    left: 1200px;
+    top: 380px;
 }
+}
+
 </style>

@@ -3,7 +3,6 @@
 
     <Navbar />
     <router-view :key="$route.fullPath"/> 
-    <BackToTop />
     <Footer />
         
   </div>
@@ -16,7 +15,6 @@ import Main from '@/components/Main'
 import Footer from '@/components/Footer'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
-import BackToTop from '@/components/BackToTop'
 import Home from '@/components/Home'
 import Popular2 from '@/components/Popular2'
 import Detail1 from '@/components/Detail1'
@@ -34,7 +32,6 @@ export default {
     Main,
     Login,
     Register,
-    BackToTop,
     Home,
     Footer,
     Popular2,

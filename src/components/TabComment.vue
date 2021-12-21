@@ -2,22 +2,23 @@
     <div>
         <main id="app" class="pagebody">
   <nav>
-    <ul class="sidenav__tabs">
-      <li class="sidenav__tab" v-for="category in categories" v-bind:key="category.id" @click="selectedCategory = category" :class="{ 'active-tab': selectedCategory == category }">
+    <ul class="sidenav__tabs" >
+      <li class="sidenav__tab"  v-for="category in categories " v-bind:key="category.id" @click="selectedCategory = category" :class="{ 'active-tab': selectedCategory == category }">
         {{ category }}
-        <p class="sidenav__tab__info">{{ categoryCount(category).length }} Bookmarks</p>
+        <p class="sidenav__tab__info">{{ categoryCount(category).length -1 }} Bookmarks</p>
       </li>
     </ul>
   </nav>
   <section class="rightsection">  
       <ul>
-        <li class="linkli__header">{{ selectedCategory }} ({{ categoryCount(selectedCategory).length }})</li>
+        <li class="linkli__header">{{ selectedCategory }} ({{ categoryCount(selectedCategory).length -1 }})</li>
         <li v-for="link in filteredLinks" v-bind:key="link.id" :class="{current: selectedCategory == link.category }" class="linkli">
-          <a class="flexleft" target="_blank" href="">
-            <p class="linkli__title">{{ link.title }}</p>
-            <p class="linkli__url">{{ link.url }}</p>
-          </a>
-          <a @click.prevent.stop="deleteItem(link)" class="btn deletebutton" href="#">Delete</a>
+          
+            <p class="flexleft" >{{ link.title }}</p>
+          
+          <a v-if="link.title != ''" @click="go(link.loca_no, link.title,link.content_no)" class="btn gobutton" >Go</a>
+          
+          <a v-if="link.title != ''" @click="deleteItem(link,link.content_no,link.title)"  class="btn deletebutton" href="#">Delete</a>
           
         </li>
       </ul>
@@ -28,45 +29,85 @@
 </template>
 
 <script>
+import { getBoard, getLike,deleteContent, deleteheart } from '../service'
+
 export default {
     data(){
         return{
+          // title2:test.data.title,
+          // content_no:test.data.content_no,
                 links: [
-      {
-        title: "내가 쓴 댓글의 글 제목은 여기에",
-        category: "댓글",
-        url: "내가 쓴 내용은 여기에?"
-      },
-      {
-        title: "강남에 엄청 맛있는 집이 있다던데 ",
-        category: "댓글",
-        url: "ㄴ그런곳은 없어여.... 그냥 빨리 먹는게 답"
-      },
-      {
-        title: "압구정 비트카페 주소 알수있나요?",
-        category: "Q&A",
-        url: "ㄴ답변 준비중입니다."
-      },
-      {
-        title: "Cedward - id pariatur nostrud ex",
-        category: "Research",
-        url: "https://Exozent.com/veniam/ut/culpa"
-      }
+                  {
+                    title: '',
+                    category: "좋아요",
+                    loca_no:''
+                  },
+                   {
+                    title : '',
+                    category: "고객센터",
+                    content_no:''
+                  }
+      // // { 
+      //   // title: "내가 쓴 댓글의 글 제목은 여기에",
+      //   title: this.links.title,
+      //   category: "좋아요",
+      //   // url: "내가 쓴 내용은 여기에?"
+      // },
+      // { 
+      //   // title: "내가 쓴 댓글의 글 제목은 여기에",
+      //   title: "gd",
+      //   category: "좋아요",
+      //   // url: "내가 쓴 내용은 여기에?"
+      // },
+      // {
+      //   title: "강남에 엄청 맛있는 집이 있다던데 ",
+      //   category: "고객센터",
+      //   // url: "ㄴ그런곳은 없어여.... 그냥 빨리 먹는게 답"
+      // },
+      // {
+      //   title: "압구정 비트카페 주소 알수있나요?",
+      //   category: "Q&A",
+      //   url: "ㄴ답변 준비중입니다."
+      // },
+      // {
+      //   title: "Cedward - id pariatur nostrud ex",
+      //   category: "Research",
+      //   url: "https://Exozent.com/veniam/ut/culpa"
+      // }
     ],
     categories: [],
     selectedCategory: ''
         };
     },
+    async created() {
+    this.getCategories();
+    this.selectedCategory = this.categories[0];
+    // -------------------------------
+    var user_id = this.$store.state.account.user.userId
+    var test = await getBoard({user_id})
+    var test2 = await getLike({user_id})
+    for (let i = 0 ; i < test.data.length ; i++){
+      test.data[i].category = '고객센터'
+      this.links.push(test.data[i])
+    }
+  console.log(this.links)
+    for (let j = 0; j < test2.data.length; j++) {
+      test2.data[j].category = '좋아요'
+      this.links.push(test2.data[j])
+    }
+},
 computed: {
     filteredLinks() {
       return this.links.filter(link => {
         return link.category.match(this.selectedCategory);
         });
+        
     }
 },
 methods: {
     getCategories() {
       let categoriesSet = new Set();
+      console.log(categoriesSet)
       this.links.forEach((link) => {
         categoriesSet.add(link.category);
       });
@@ -77,16 +118,37 @@ methods: {
         return link.category.match(category);
       });
     },
-    deleteItem(link) {
-      if (confirm("Are you sure?")) {
+    async deleteItem(link,content_no,title) {
+      if (confirm("정말 삭제하시겠습니까?")) {
         let index = this.links.indexOf(link);
         this.links.splice(index, 1);
+
+      var user = this.$store.state.account.user.userId
+        if(content_no != null){
+          await deleteContent({content_no})
+          } else {
+            await deleteheart({user,title})
+          }  
       }
+      
+    },
+    go(loca_no,title, content_no) {
+      if(loca_no != null){
+       this.$router.push({
+        name: 'LocationDetail',
+        query: {
+          loca_no: loca_no,
+          title: title
+        }
+      })
+      
+      } else if(content_no) {
+        this.$router.push({
+        path: `/board/free/detail/${content_no}`
+      })
     }
   },
-  created() {
-    this.getCategories();
-    this.selectedCategory = this.categories[0];
+ 
 }
 }
 </script>
@@ -215,10 +277,17 @@ a {
 .flexleft {
     color: #333300;
     width: 100%;
+    font-size: 18px;
+    /* font-weight: bold; */
 }
 .deletebutton {
     align-self: center;
     box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.3);
+}
+.gobutton {
+    align-self: center;
+    box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.3);
+    margin-right: 10px;
 }
 /* End style for Link box li */
 </style>

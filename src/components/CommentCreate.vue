@@ -59,6 +59,12 @@ export default {
 };
 </script>
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap'); 
+* {
+  font-family: 'Nanum Gothic', sans-serif;
+ 
+  
+}
 .comment-create {
   display: flex;
   margin-bottom: 1em;

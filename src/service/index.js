@@ -194,8 +194,63 @@ export const addContent = ({ user_no, title, context }) => {
     });
   };
 
+  // get-user-name
   export const getusername = ({ token }) => {
     return axios.get("http://ec2-3-34-126-3.ap-northeast-2.compute.amazonaws.com:3000/find/username", {
       params: { token }
+    });
+  };
+
+  // updateheart
+  export const updateheart = ({user, title }) => {
+    return axios.post("http://ec2-3-34-126-3.ap-northeast-2.compute.amazonaws.com:3000/updateheart", {
+      user, title
+    });
+  };
+
+  // deleteheart
+  export const deleteheart = ({user, title }) => {
+    return axios.post("http://ec2-3-34-126-3.ap-northeast-2.compute.amazonaws.com:3000/deleteheart", {
+      user, title
+    });
+  };
+
+  // selectheart
+  export const selectheart = ({ user }) => {
+    return axios.get("http://ec2-3-34-126-3.ap-northeast-2.compute.amazonaws.com:3000/selectheart", {
+      params: { user }
+    });
+  };
+
+  // getallheart
+  export const getallheart = () => {
+    return axios.get("http://ec2-3-34-126-3.ap-northeast-2.compute.amazonaws.com:3000/find/getallheart");
+  };
+
+  // 마이페이지 고객센터
+  export const getBoard = ({ user_id }) => {
+      return axios.get("http://ec2-3-34-126-3.ap-northeast-2.compute.amazonaws.com:3000/getboard", {
+        params: { user_id }
+      });
+    };
+
+    // 마이페이지 좋아요
+  export const getLike = ({ user_id }) => {
+    return axios.get("http://ec2-3-34-126-3.ap-northeast-2.compute.amazonaws.com:3000/getlike", {
+      params: { user_id }
+    });
+  };
+
+
+  // 회원탈퇴
+  export const dropUser = ({ user_id }) => {
+    return axios.post("http://ec2-3-34-126-3.ap-northeast-2.compute.amazonaws.com:3000/dropuser", {
+      user_id
+    });
+  };
+
+  export const dropUserToken = ({ user_id }) => {
+    return axios.post("http://ec2-3-34-126-3.ap-northeast-2.compute.amazonaws.com:3000/dropusertoken", {
+      user_id
     });
   };

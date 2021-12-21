@@ -5,22 +5,22 @@
 
 
     <fieldset>
-      <legend>회원정보 수정 폼</legend>
+      <legend>회원탈퇴</legend>
       <div>
-        <label class="label" for="name">닉네임</label>
-        <input type="text"  name="name" id="name" required="" v-model="name" >
+        <label class="label" for="name">이름</label>
+        <input type="text"  name="name" id="name" required="" v-model="name" readonly >
       </div>
-      <div>
+      <!-- <div>
         <label class="label" for="idname">아이디</label>
         <input type="text" class="lock" name="idname" id="idname" required="" v-model="idname" readonly>
-      </div>
-      <div>
+      </div> -->
+      <!-- <div>
         <label class="label" for="password">비밀번호</label>
         <input type="password" name="password" id="password" required="" v-model="password">
-      </div>
+      </div> -->
       <div>
-        <label class="label" for="phone">핸드폰번호</label>
-        <input type="text" name="phone" id="phone" required="" v-model="phone">
+        <label class="label" for="regdate">가입일</label>
+        <input type="text" name="regdate" id="regdate" required="" v-model="regdate" readonly>
       </div>
       <div>
         <label class="label" for="email">Email</label>
@@ -78,7 +78,9 @@
         <span class="counter">{{ message.text.length }} / {{ message.maxlength }}</span>
       </div> -->
       <div>
-        <input type="submit" value="수정하기">
+        <!-- <input type="submit" value="회원탈퇴"> -->
+        <button class="drop" @click="goDrop">회원탈퇴</button>
+
       </div>
     </fieldset>
   </form>
@@ -87,31 +89,47 @@
 </template>
 
 <script>
+import { dropUser,dropUserToken } from '../service'
+
 var emailRegExp = /^[a-zA-Z0-9.!#$%&'*+=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 export default{
     data: function() {
     return {
-      name: "비트",
-      idname: "수정 불가능",
-      phone: "000-0000-0000",
-      password:"아무거나 쓰기",
+      name: this.$store.state.account.user.username,
+      // idname: "수정 불가능",
+      regdate: this.$store.state.account.user.createdAt,
+      // password:"아무거나 쓰기",
       email: {
-        value: "narae@bit.co.kr",
+        value: this.$store.state.account.user.email,
         valid: true
       },
-      selection: {
-        member: "0",
-        framework: "vue",
-        features: []
-      },
-      message: {
-        text: `내용을 입력하세요`,
-        maxlength: 255
-      },
-      submitted: false
+    //   selection: {
+    //     member: "0",
+    //     framework: "vue",
+    //     features: []
+    //   },
+    //   message: {
+    //     text: `내용을 입력하세요`,
+    //     maxlength: 255
+    //   },
+    //   submitted: false
     };
   },
  methods: {
+   async goDrop(){
+     if(confirm("정말 탈퇴하시겠습니까?") == true) {
+       // 확인누르면 여기서 await dropUser 함수 실행시켜서 db에서 회원정보 삭제하고 logout 페이지로 router push
+       const user_id = this.$store.state.account.user.userId
+        await dropUser({user_id});
+        await dropUserToken({user_id});
+        this.$router.push({
+        path: '/logout'
+      })
+     } else{
+       return false;
+     }
+     
+   },
     // submit form handler
     submit: function() {
       this.submitted = true;
@@ -367,6 +385,23 @@ header h1 {
   resize: vertical;
   overflow: auto;
 }
+.drop{
+   border: none;
+  background: #7bc4c4;
+  border-radius: 0.25em;
+  padding: 12px 20px;
+  color: #ffffff;
+   font-weight: bold;
+  
+  cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  appearance: none;
+}
+.drop :hover{
+  background: #42a2e1;
+
+}
 .vue-form input[type="submit"] {
   border: none;
   background: #7bc4c4;
@@ -461,4 +496,5 @@ header h1 {
 .vue-form input[class="lock"]{
   background-color: rgb(218, 218, 218);
 }
+
 </style>

@@ -7,7 +7,7 @@
       <div class="img"></div>
 
       <div class="comment-list-item-name" >
-        <div class="name-name">{{name}}</div>
+        <div class="name-name">{{commentObj.username}}</div>
         <div class="comment-list-item-time">{{commentObj.regdate}}</div>
         <div class="comment-list-item-context">{{commentObj.context}}</div>
       </div>
@@ -71,7 +71,6 @@
 </template>
 
 <script>
-import data from "@/data";
 import CommentCreate from "./CommentCreate";
 import {findSubComment, deleteComment, deleteSubComment, modifyComment, addComment} from '../service';
 
@@ -144,6 +143,12 @@ export default {
 };
 </script>
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap'); 
+* {
+  font-family: 'Nanum Gothic', sans-serif;
+ 
+  
+}
 .comment-list-item {
   display: grid;
   padding-bottom: 20px;
@@ -171,7 +176,7 @@ export default {
 }
 .comment-list-item-context {
   text-align: left;
-  width: 31em;
+  width: 44em;
   position: relative;
   /* border: 0.5px solid rgb(139, 139, 139); */
   bottom: 12px;
@@ -209,7 +214,8 @@ export default {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #7bc4c4;
+    background: url("https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/7r5X/image/9djEiPBPMLu_IvCYyvRPwmZkM1g.jpg") no-repeat center;
+    background-size: cover;
     position: relative;
     bottom: 3px;
     

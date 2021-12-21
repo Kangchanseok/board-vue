@@ -12,38 +12,39 @@
             class="test"
             :src= "picture2"
             height="500"
-            width="600"
+            width="800"
             />
-            <div>{{context2}}</div>
+            <div class="textall">{{context2}}</div>
             <img v-if="picture3!=''"
             class="test"
             :src= "picture3"
             height="500"
-            width="600"
+            width="800"
             />
-            <div>{{context3}}</div>
+            <div class="textall">{{context3}}</div>
             <img v-if="picture4!=''"
             class="test"
             :src= "picture4"
             height="500"
-            width="600"
+            width="800"
             />
-            <div>{{context4}}</div>
+            <div class="textall">{{context4}}</div>
             <img v-if="picture5!=''"
             class="test"
             :src= "picture5"
             height="500"
-            width="600"
+            width="800"
             />
-            <div>{{context5}}</div>
+            <div class="textall">{{context5}}</div>
             <img v-if="picture6!=''" 
             class="test"
             :src= "picture6"
             height="500"
-            width="600"
+            width="800"
             />
-            <div>{{context6}}</div>
+            <div class="textall">{{context6}}</div>
         </div>
+        <div class="line"></div>
         <div>
     <naver-maps
       :height="height"
@@ -72,31 +73,44 @@
         :bounds="{south:36.7,north:36.9,west:126.5,east:127.5}"/>
     </naver-maps>
     <!-- 얘도 이쁘게 바꿔야함 -->
-    <p>마크 클릭시 자세한정보가 나옵니다</p>
+     <p class="marker-notice">📍마커 클릭시 자세한정보가 나옵니다</p>
   </div>
 
-    <div style="border: 3px solid black; padding: 100px; margin-top: 20px;
-    margin-left:100px; margin-right:100px; ">{{context7}}</div>
+     <div class="map-info">
+      <h4>📌 위치 정보</h4>
+        <li>주소 : {{mapdata.map_address}}</li>
+        <li>전화번호 : {{mapdata.map_tel}}</li>
+        <li>홈페이지 : {{mapdata.map_page}}</li>
+        <li>영업시간 : {{mapdata.map_time}}</li>
+    </div>
+    <br />
+    <br />
+  </div>
+    <!-- <div class="line"></div> -->
+    <div class="text7">
+      <h4>📋 추가 정보</h4>
+      {{context7}}<br />
+      
+
+    </div>
     <br/>
     <br/>
-    <div class="line"></div>
+    <div class="line2"></div>
 
     <div class="content-detail-comment">
-        <LocationCommentList :locaNo="locaNo"/>
+        <LocationCommentList  v-if="this.$store.state.account.user != null" :locaNo="locaNo"/>
       </div>
      </div>
-  </div>
+  
 </template>
 
 <script>
-import Backtotop from '@/components/BackToTop.vue';
 import {findLocation, findMap} from '../service';
 import LocationCommentList from './LocationCommentList';
 
 export default {
     name: 'LocationDetail',
     components:{
-        Backtotop,
         LocationCommentList
     },
     // async beforecreate() {
@@ -139,8 +153,8 @@ export default {
     data(){
       const locaNo = Number(this.$route.query.loca_no);
         return{
-            width: 700,
-        height: 700,
+            width: 800,
+        height: 400,
         info: false,
         marker: null,
         count: 1,
@@ -203,30 +217,56 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap'); 
+* {
+  font-family: 'Nanum Gothic', sans-serif;
+ 
+  
+}
+#vue-naver-maps{
+    margin: 0 auto; /* 가운데 정렬 */
+}
 /* 글씨 */
 .info-window-container {
     padding: 10px;
     width: 300px;
     height: 100px;
   }
-  /* 하얀색 박스 */
-.info-window { 
+.info-window-container h1{
+  font-size: 15px;
+  font-weight: bold;
+}
+.info-window-container h2{
+  font-size: 10px;
+  padding-bottom: 2px;
+}
+.info-window-container p,a{
+  margin: 0;
+  font-size: 10px;
+}
+  /* 하얀색 박스???? 없어도 될듯?*/
+/* .info-window { 
     width: 500px;
     height: 100px;
-}
+} */
 .test-title h1 {
-    padding-top: 100px;
+    padding-top: 130px;
+    box-shadow: inset 0 -20px 0 #96dddd;;
+    width: 30%;
+    margin:0 auto; /* 가운데 정렬 */
 }
-
-.test-title p {
+.test-title h4 {
+  font-size: 20px;
+  padding-top: 10px;
+  color: #777;
+}
+.test-title  {
     padding-bottom: 70px;   
 }
-
 .contents3 h2{
     padding: 100px;
     padding-bottom: 20px;
 }
-
 .test-taglist{
     margin: 0 auto;
     position: relative;
@@ -237,30 +277,25 @@ export default {
     padding-bottom: 10px;
     left: 380px;
 }
-
 .test-taglist ul{
     padding: 15px 0 0 15px;
     list-style: none;
 }
-
 .test-taglist ul li {
     float: left;
     width: auto;
     padding: 5px;
 }
-
 .test-taglist ul li a:hover {
     color: #ffffff;
     background-color: #7bc4c4;
 }
-
 .test-taglist ul li a span{
     display: inline-block;
     height: 38px;
     line-height: 38px;
     padding: 0 20px;
 }
-
 .test-taglist ul li a {
     display: inline-block;
     overflow: hidden;
@@ -272,25 +307,97 @@ export default {
     border: 1px solid #d8d7d7;
     border-radius: 7px;  
 }
-
 a:link{
     text-decoration: none;
 }
-
 .line{
-    width: 100%;
-    height: 2px;
-    background:rgb(187, 187, 187);
-    padding-bottom: 2px;
-    margin-bottom: 10px;
+    border-top: 1px solid #e9ecef;
+    height: 20px;
+    /* background:rgb(187, 187, 187);
+    padding-bottom: 50px;
+    margin-bottom: 10px;  */
+    width: 70%;
+    margin: 0 auto; /* 가운데 정렬 */
+ 
+}
+.marker-notice{
+  padding: 15px;
+  font-size: 13px;
+  font-weight: bold;
 }
 .content-detail-comment {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin-top: 1rem;
   padding: 2rem;
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: 350px;
+  margin-right: 300px;
+  
 }
-
-
+.contents-Detail{
+  padding-top: 10px;
+  
+}
+.textall{
+  font-size: 15xpx;
+  font-weight: bold;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 510px;
+  margin:0 auto; /* 가운데 정렬 */
+}
+/* 추가 정보 */
+.map-info{
+   border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  background-color: #fafafa;
+  padding: 20px; 
+  color: black;
+  text-align: left;
+  /* margin-top: 20px;
+  margin-left:100px; 
+  margin-right:100px;  */
+  width: 1070px;
+  margin:0 auto; /* 가운데 정렬 */
+  height: 150px;
+}
+.text7{
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  background-color: #fafafa;
+  padding: 20px; 
+  color: black;
+  text-align: left;
+  /* margin-top: 20px;
+  margin-left:100px; 
+  margin-right:100px;  */
+  width: 1070px;
+  margin:0 auto; /* 가운데 정렬 */
+  height: 120px;
+}
+.text7 h4{
+  font-size: 18px;
+  font-weight: bold;
+}
+.map-info h4{
+  font-size: 18px;
+  font-weight: bold;
+}
+.map-info li{
+    float: left;
+    width: 50%;
+    padding: 0 0 9px 0;
+}
+.line2{
+  border-top: 1px solid #e9ecef;
+}
+@media (min-width: 1650px) {
+  .contents-Detail img{
+    height: 600px;
+    width: 1100px;
+  }
+  .textall{
+  font-size: 20px;
+  width: 1000px;
+}
+}
 </style>

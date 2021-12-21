@@ -4,18 +4,18 @@
            <h1>My Account</h1> 
 
     <div class="tabs">
-        <a v-on:click="activetab=1" v-bind:class="[ activetab === 1 ? 'active' : '' ]">회원정보 수정</a>
+        <a v-on:click="activetab=1" v-bind:class="[ activetab === 1 ? 'active' : '' ]">내 글 보기</a>
 
-        <a v-on:click="activetab=3" v-bind:class="[ activetab === 3 ? 'active' : '' ]">내글 보기</a>
+        <a v-on:click="activetab=3" v-bind:class="[ activetab === 3 ? 'active' : '' ]">회원탈퇴</a>
 
     </div>
 
     <div class="content">
         <div v-if="activetab === 1" class="tabcontent">
-            <Update />
+            <TabComment />
         </div>
         <div v-if="activetab === 3" class="tabcontent">
-            <TabComment />
+            <Update />
         </div>
 
     </div>

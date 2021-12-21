@@ -42,7 +42,7 @@ var names = [
   { name: '#동대문구' },
   { name: '#동작구' },
   { name: '#마포구' },
-  { name: '#서대문ㅁ구' },
+  { name: '#서대문구' },
   { name: '#서초구' },
   { name: '#성동구' },
   { name: '#성북구' },
@@ -62,7 +62,19 @@ var names = [
   { name: '#구로구' },
   { name: '#금천구' },
   { name: '#노원구' },
-  { name: '#가족끼리'}
+  { name: '#가족끼리'},
+  { name: '#힐링'},
+  { name: '#데이트코스'},
+  { name: '#카페투어'},
+  { name: '#가볼만한곳'},
+  { name: '#기념일'},
+  { name: '#나홀로'},
+  { name: '#전통한옥'},
+  { name: '#전시관'},
+  { name: '#인스타감성'},
+  { name: '#혼술'},
+  { name: '#오늘뭐먹지'},
+  { name: '#이색체험'},
 ]
 export default {
   data () {
@@ -200,7 +212,7 @@ strong {
     margin: 0 auto;
     width: 100%;
     max-width: 600px;
-     margin-top: 100px;
+     margin-top: 10px;
 }
 #app .search .s {
     padding: 10px 20px;

@@ -669,7 +669,7 @@
       <div v-if="강남구">
          <img src="https://images.unsplash.com/photo-1517154421773-0529f29ea451?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"  />
          <h1>강남구</h1>
-         <h3>#이런식으로? #코엑스 #강남역 사거리 #비트 #탄탄면</h3>
+
       </div>
    </div>
    
@@ -677,7 +677,7 @@
       <div v-if="강동구">
          <img src="https://images.unsplash.com/photo-1617541086271-4d43983704bd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1769&q=80"  />
          <h1>강동구</h1>
-         <p>강동구는 대한민국 서울특별시의 동부에 있는 구이다. 1979년 강남구에서 분리되었다. 동쪽으로 경기도 하남시, 남쪽으로 송파구와 접하고, 한강을 경계로 서쪽으로는 광진구, 북쪽으로는 경기도 구리시와 접한다.</p>
+
       </div>
    </div>
    
@@ -685,7 +685,7 @@
       <div v-if="강북구">
          <img src="https://images.unsplash.com/photo-1472387040940-3ae0cdbf127d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2818&q=80"  />
          <h1>강북구</h1>
-         <p>강북구는 대한민국 서울특별시 북동부에 있는 자치구이다. 구 전체 면적은 23.60km²로 그 중 공원녹지 지역이 12.922km²로 구 전체면적의 54.8%를 차지한다.</p>
+
       </div>
    </div>
    
@@ -693,8 +693,7 @@
       <div v-if="강서구">
          <img src="https://images.unsplash.com/photo-1570559396209-4dde7519837f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"  />
          <h1>강서구</h1>
-         <p>강서구는 대한민국 서울특별시의 서남부에 있는 구이다. 북쪽으로는 한강을 경계로 마포구와 경기도 고양시 덕양구, 동쪽으로는 영등포구,
-             남쪽으로는 양천구와 경기도 부천시 오정동, 서쪽으로는 경기도 김포시, 인천광역시 계양구 계양동과 접한다. 한강의 서쪽에 위치해서 강서라고 이름을 지었다.</p>
+
       </div>
    </div>
    
@@ -702,8 +701,7 @@
       <div v-if="관악구">
          <img src="https://images.unsplash.com/photo-1601747297625-cf77828558db?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1856&q=80"  />
          <h1>관악구</h1>
-         <p>관악구는 대한민국 서울특별시의 남부에 있는 구이다. 1973년 영등포구에서 분리되었다. 
-            북쪽으로는 동작구, 동쪽으로는 서초구, 남쪽으로는 관악산을 경계로 경기도 안양시와 과천시, 서쪽으로는 금천구, 구로구와 접한다. 구명은 분구될 때, 이 지역의 명산인 관악산에서 따왔다.</p>
+
       </div>
    </div>
    
@@ -774,8 +772,7 @@
       <div v-if="서초구">
          <img src="https://images.unsplash.com/photo-1617541101297-1391249475e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1769&q=80"  />
          <h1>서초구</h1>
-         <p>서초구는 대한민국 서울특별시 남부에 있는 구이다. 1988년 강남구에서 분리되어 구청 소재지인 서초동에서 구명을 따 신설하였다. 
-            동쪽으로 강남구, 서쪽으로는 동작구·관악구, 북쪽으로는 한강을 경계로 용산구, 남쪽으로는 우면산·청계산·인릉산을 경계로 경기도 과천시·성남시와 접한다.</p>
+
       </div>
    </div>
    
@@ -783,7 +780,7 @@
       <div v-if="성동구">
          <img src="https://images.unsplash.com/photo-1608977522061-2bfeb782b728?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"  />
          <h1>성동구</h1>
-         <p>성동구는 대한민국 서울특별시의 동부에 있는 자치구이다. 북쪽으로는 동대문구, 동쪽으로는 광진구, 남쪽으로는 한강의 경계에 있는 강남구, 서쪽으로는 중구, 용산구와 접한다. 한양도성의 동쪽이란 뜻에서 구명을 정했다</p>
+        
       </div>
    </div>
    
@@ -791,7 +788,7 @@
       <div v-if="성북구">
          <img src="https://images.unsplash.com/photo-1595037676638-3e1dc5626691?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"  />
          <h1>성북구</h1>
-         <p>성북구는 대한민국 서울특별시의 북부에 있는 자치구이다. 성북의 명칭은 이 지역에 있던 성북동에서 나왔다.</p>
+
       </div>
    </div>
    
@@ -799,8 +796,7 @@
       <div v-if="송파구">
          <img src="https://images.unsplash.com/photo-1614346950571-ddda7fc206af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"  />
          <h1>송파구</h1>
-         <p>송파구는 서울특별시의 남동부에 있는 자치구이다. 1988년 강동구에서 분리되었다. 인구는 약 67만여 명으로 대한민국 자치구 중 인구가 가장 많다. 
-            동쪽으로는 강동구와 경기도 하남시, 서쪽으로 탄천을 경계로 강남구, 남쪽으로는 경기도 성남시, 북쪽으로는 한강을 경계로 광진구와 접한다.</p>
+
       </div>
    </div>
    
@@ -915,7 +911,12 @@ export default{
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap'); 
+* {
+  font-family: 'Nanum Gothic', sans-serif;
+ 
+  
+}
 .all-svg{
    background-color: #ffffff;
 }
@@ -944,7 +945,7 @@ export default{
 #provinceInfo {
   
   position:absolute;
-  top: -10%;
+  top: -50%;
   right: 0;
   width: 40%;
   
@@ -960,10 +961,10 @@ export default{
   transition: 1s;
 }
 #provinceInfo div img{
-   width: 810px;
-   height:500px;
+   width: 550px;
+   height: 400px;
 }
-@media all and (max-width: 800px) {
+/* @media all and (max-width: 800px) {
   #provinceInfo {
     width: 40%;
   }
@@ -979,7 +980,7 @@ export default{
     color: #7bc4c4 !important;
     margin-bottom: 2rem;
   }
-}
+} */
 #provinceInfo.show {
 	
   opacity: 1;
@@ -1006,5 +1007,27 @@ export default{
 	}
 #provinceInfo img {
   width: 100%;
+}
+@media (max-width: 1800px) {
+  #provinceInfo {
+  margin-top: 1800px;
+  margin-right: 150px;
+  }
+#provinceInfo div img{
+   width: 100%;
+   height: 450px;
+}
+   
+}
+@media (min-width: 1801px) {
+  #provinceInfo {
+  margin-top: 2200px;
+  margin-right: 150px;
+  }
+#provinceInfo div img{
+   width: 100%;
+   height: 450px;
+}
+   
 }
 </style>

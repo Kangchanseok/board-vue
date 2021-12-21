@@ -8,18 +8,35 @@
       <!-- <div id="slides-cont"> -->
       <div id="slides">
         <div class="slide" style="background-image: url(https://i.postimg.cc/k5w2g7kY/Gyeonghuigung.jpg)">
+              
+             <!-- 좋아요  -->  
+            <!-- <div class="container-heart">
+                  <li v-for="like in likes" :key="like.id">
+                    <label>
+                      <input type="checkbox"
+                        v-on:change="toggle(like)"
+                        v-bind:checked="like.done">
 
-          <!-- <div class="icons">
-            <div class="views"><i class="ion-eye"></i>9,280</div> 
-            <div class="love"><i class="ion-heart"></i>2,341</div>
-          </div> -->
+                      <del v-if="like.done">
+                        {{ like.text }}
+                        ❤️&nbsp;&nbsp;
+                        {{ like.count1 + 1 }}
+                      </del>
+                      <span v-else>
+                        {{ like.text }}
+                        🤍&nbsp;&nbsp;
+                        {{ like.count1 }}
+                      </span>
+                    </label>
+                  </li>
+            </div> -->
+
 
           <div class="number">01</div>
           <div class="body">            
-            <div class="location">Gyeonghuigung, South Korea</div>
-            <div class="headline" @click="test">Photo by Bundo Kim</div>
-            <!-- <a href="https://unsplash.com/photos/Y7IilZ5VLdA" target="_blank">
-              <div class="link">View on Unsplash</div></a> -->
+            <div class="location">Photo by Bundo Kim</div>
+            <div class="headline" >경희궁,<br>종로구 새문안로 45 </div>
+              <div class="link"  @click="gogo">클릭시 이동합니다.</div>
           </div>
         </div>
       </div>
@@ -34,16 +51,33 @@
       <div id="slides">
     <div class="slide" style="background-image: url(https://i.postimg.cc/635Gr8rN/Deoksugung.jpg)">
 
-          <!-- <div class="icons">
-            <div class="views"><i class="ion-eye"></i>8,731</div> 
-            <div class="love"><i class="ion-heart"></i>3,011</div>
-          </div> -->
+      
+    <!-- <div class="container-heart">
+          <li v-for="like in likes" :key="like.id">
+            <label>
+              <input type="checkbox"
+                v-on:change="toggle(like)"
+                v-bind:checked="like.done">
+
+              <del v-if="like.done">
+                {{ like.text }}
+                ❤️&nbsp;&nbsp;
+                {{ like.count2 + 1 }}
+              </del>
+              <span v-else>
+                {{ like.text }}
+                🤍&nbsp;&nbsp;
+                {{ like.count2 }}
+              </span>
+            </label>
+          </li>
+    </div> -->
 
           <div class="number">02</div>
           <div class="body">
-            <div class="location">Mong Kok, Hong Kong</div>
-            <div class="headline">Photo by Ryan Tang</div><a href="https://unsplash.com/photos/t9mr0d1igac" target="_blank">
-              <div class="link">View on Unsplash</div></a>
+            <div class="location">Photo by SeongPhil Jang</div>
+            <div class="headline">덕수궁,<br>중구 정동 세종대로 99</div>
+              <div class="link"  @click="gogo">클릭시 이동합니다.</div>
           </div>
         </div>
       </div>
@@ -59,16 +93,33 @@
     <div id="slides">
     <div class="slide" style="background-image: url(https://i.postimg.cc/W15D2NRW/cait-ellis-Erld-XTq-Xv0-unsplash.jpg)">
 
-          <!-- <div class="icons">
-            <div class="views"><i class="ion-eye"></i>10,239</div> 
-            <div class="love"><i class="ion-heart"></i>6,593</div>
-          </div> -->
+
+    <!-- <div class="container-heart">
+          <li v-for="like in likes" :key="like.id">
+            <label>
+              <input type="checkbox"
+                v-on:change="toggle(like)"
+                v-bind:checked="like.done">
+
+              <del v-if="like.done">
+                {{ like.text }}
+                ❤️&nbsp;&nbsp;
+                {{ like.count3 + 1 }}
+              </del>
+              <span v-else>
+                {{ like.text }}
+                🤍&nbsp;&nbsp;
+                {{ like.count3 }}
+              </span>
+            </label>
+          </li>
+    </div> -->
 
           <div class="number">03</div>
           <div class="body">
             <div class="location">Incheon, South Korea</div>
-            <div class="headline">Photo by Steve Roe</div><a href="https://unsplash.com/photos/73aocAAt7rs" target="_blank">
-              <div class="link">View on Unsplash</div></a>
+            <div class="headline">Photo by Steve Roe</div>
+              <div class="link"  @click="gogo">클릭시 이동합니다.</div>          
           </div>
         </div>
   </div>
@@ -84,16 +135,32 @@
       <div id="slides">
     <div class="slide" style="background-image: url(https://i.postimg.cc/fTwTkGf6/robson-hatsukami-morgan-ku9-Ftte6-Ymo-unsplash.jpg)">
 
-          <!-- <div class="icons">
-            <div class="views"><i class="ion-eye"></i>928</div> 
-            <div class="love"><i class="ion-heart"></i>198</div>
-          </div> -->
+    <!-- <div class="container-heart">
+          <li v-for="like in likes" :key="like.id">
+            <label>
+              <input type="checkbox"
+                v-on:change="toggle(like)"
+                v-bind:checked="like.done">
+
+              <del v-if="like.done">
+                {{ like.text }}
+                ❤️&nbsp;&nbsp;
+                {{ like.count4 + 1 }}
+              </del>
+              <span v-else>
+                {{ like.text }}
+                🤍&nbsp;&nbsp;
+                {{ like.count4 }}
+              </span>
+            </label>
+          </li>
+    </div> -->
 
           <div class="number">04</div>
           <div class="body">
             <div class="location">Wan Chai, Hong Kong</div>
-            <div class="headline">Photo by Sean Foley</div><a href="https://unsplash.com/photos/aPDCEoW7B78" target="_blank">
-              <div class="link">View on Unsplash</div></a>
+            <div class="headline">Photo by Sean Foley</div>
+              <div class="link"  @click="gogo">클릭시 이동합니다.</div>       
           </div>
 
         </div>
@@ -107,17 +174,33 @@
     <div id="hero-slides">
       <!-- <div id="slides-cont"> -->
     <div id="slides">
-    <div class="slide" style="background-image: url(https://alca.tv/static/u/b9669f2a-17fc-47dc-b6b5-3f863004efa8_opt.png)">
+    <div class="slide" style="background-image: url(https://images.unsplash.com/photo-1624079569473-fbb97980a4f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80)">
 
-          <!-- <div class="icons">
-            <div class="views"><i class="ion-eye"></i>928</div> 
-            <div class="love"><i class="ion-heart"></i>198</div>
-          </div> -->
+    <!-- <div class="container-heart">
+          <li v-for="like in likes" :key="like.id">
+            <label>
+              <input type="checkbox"
+                v-on:change="toggle(like)"
+                v-bind:checked="like.done">
+
+              <del v-if="like.done">
+                {{ like.text }}
+                ❤️&nbsp;&nbsp;
+                {{ like.count5 + 1 }}
+              </del>
+              <span v-else>
+                {{ like.text }}
+                🤍&nbsp;&nbsp;
+                {{ like.count5 }}
+              </span>
+            </label>
+          </li>
+    </div> -->
           <div class="number">05</div>
           <div class="body">
-            <div class="location">Shibuya-ku, Japan</div>
-            <div class="headline">Photo by Alex Knight</div><a href="https://unsplash.com/photos/Akz00I_GGjU" target="_blank">
-              <div class="link">View on Unsplash</div></a>
+            <div class="location">Photo by Luminos film</div>
+            <div class="headline">롯데타워,<br> 송파구 올림픽로 300</div>
+              <div class="link"  @click="gogo">클릭시 이동합니다.</div>
           </div>
     </div>
         </div>
@@ -139,10 +222,7 @@ import {Hooper,
   }
    from "hooper";
 import 'hooper/dist/hooper.css';
-import { popularList } from '../service'
-
 export default {
-   
     components: {
         Hooper,
         Slide,
@@ -157,30 +237,47 @@ data(){
             mouseDrag : false,
             wheelControl: false,
             transition: 500 // 슬라이딩 전환 시간 기본:300
-        }
+        },
+      likes: [
+        {
+          count1: 13296, 
+          count2: 9287,  
+          count3: 8837,
+          count4: 6452,
+          count5: 5543,
+          text:"",
+          done: false,
+        },
+      ],
     };
 },
 methods:{
   gogo(){
     this.$router.push({
       path: "/detail3/locationdetail/1"
-    })
-  },
-  test() {
-    console.log(popularList)
-  }
+      })
+    },
+    toggle: function(like){
+      like.done =!like.done;
+      count = count + 1;
+    }
 }
-};
+}
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap'); 
+* {
+  font-family: 'Nanum Gothic', sans-serif;
+ 
+  
+}
 /* @import '.css/hooper.css'; */
 .hooper-next, .hooper-prev {
 background-color: blue;
 }
 .hooper{
-  height: 760px;
+  height: 630px;
   
 }
 /* 
@@ -197,7 +294,7 @@ background-color: blue;
   height: 100%;
   /* background: #25303c; */
   /* background : #ffffff; */
-  /* background: linear-gradient(90deg, #7bc4c4 0%, #7bc4c4 100%); */
+  background: linear-gradient(0deg, #7bc4c4 100%, #7bc4c4 100%);
   background-color: #7bc4c4;
   
   
@@ -320,7 +417,7 @@ background-color: blue;
   /* --slides-height: 700px; */
   width: auto;
   height: 700px;
-  padding: 0 10vw;
+  padding: -1px 10vw;
   
   font-size: 0;
   white-space: nowrap;
@@ -347,7 +444,7 @@ background-color: blue;
 #hero-slides #slides .slide:before {
   content: "";
   display: block;
-  background: linear-gradient(180deg, rgba(86, 97, 108, 0) 0%, rgba(33, 52, 69, 0.7) 100%);
+  background: linear-gradient(180deg, rgba(86, 97, 108, 0) 0%, rgba(33, 52, 69, 1) 80%);
   opacity: 0;
   position: absolute;
   top: 0;
@@ -402,7 +499,8 @@ background-color: blue;
   transition: 375ms cubic-bezier(0.7, 0, 0.3, 1);
 }
 #hero-slides #slides .slide .location {
-  font-weight: 100;
+  font-size: 12px;
+  font-weight: 500;
   margin-bottom: 1.5em;
   transition-delay: 60ms;
 }
@@ -413,15 +511,16 @@ background-color: blue;
 }
 #hero-slides #slides .slide .link {
   display: inline-block;
-  background: #0d96f2;
+  background: #ffffff;
   padding: 0.5em 1.25em;
-  color: rgb(255, 255, 255);
-  font-size: 1.33em;
+  color: rgb(0, 0, 0);
+  font-size: 1.34em;
   opacity: 0;
-  position: absolute;
+  /* position: absolute; */
   bottom: -2em;
   pointer-events: none;
   transition-delay: 25ms;
+  cursor: pointer;
 }
 #hero-slides #slides .slide.hover:before, #hero-slides #slides .slide:hover:before {
   opacity: 1;
@@ -514,7 +613,7 @@ background-color: blue;
   }
   
 }
-@media (min-width: 1001px) and (max-width: 1649px) {
+@media (max-width: 1800px) {
   .body {
     --slides-per-page: 3;
   }
@@ -522,15 +621,61 @@ background-color: blue;
     font-size: 0.75vw;
     height: 565px;
   }
+  #hero-slides {
+    /* background: linear-gradient(0deg, #7bc4c4 0%, #7bc4c4 0%); */
+    /* background: #7bc4c4; */
+  }
  
 }
-@media (min-width: 1650px) {
+@media (min-width: 1801px) {
+  /* #hero-slides {
+    background: linear-gradient(0deg, #7bc4c4 0%, #7bc4c4 0%);
+  } */
   .body {
-    --slide-per-page: 4;
+    --slide-per-age: 4;
+    
   }
   #hero-slides #slides .slide {
-    font-size: 0.8vw;
-    height: 700px;
-  }
+  font-size: 0.55vw;
+  width: 34em;
+  height: 60em;
+}
+.hooper{
+  height: 700px;
+  
+}
+.container-heart{
+  left:131%;
+  top:4%;
+  font-size: 13px;
+  margin-left: 10px;
+  
+}
+}
+/* 좋아요 css */
+.container-heart{
+  position:relative;
+  left:122%;
+  top:4%;
+  display:flex;
+  /* justify-content:center;
+  align-items:center; */
+  transform:translate(-50%,-50%);
+}
+h2 {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+input[type="checkbox"] {
+  display: none;
+}
+label{
+  cursor: pointer;
+  /* background: #000; */
+}
+del {
+  
+  text-decoration: none;
+  transition: .3s;
 }
 </style>

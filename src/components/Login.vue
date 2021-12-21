@@ -16,33 +16,33 @@
                       :style='{width: social.width, height: social.height}'
                     )
                     | {{ social.comment }}
-              .or-separator
-                span.or-text OR
-              .form-warp
-                .form-item
-                  input.form-control(
-                    type='text'
-                    placeholder='아이디'
-                    v-model='id'
-                    @input='inputChanged'
-                    @keyup.enter='login'
-                  )
-                .form-item
-                  input.form-control(
-                    type='password'
-                    placeholder='비밀번호'
-                    v-model='password'
-                    @input='inputChanged'
-                    @keyup.enter='login'
-                  )
-                .form-item
-                  p.login-error(:class='{ show: cannotLogin }') 아이디 혹은 비밀번호가 입력되지 않았습니다.
-                  p.login-error(:class='{ show: isLoginFailed }') 아이디 혹은 비밀번호를 확인해주세요.
-                .form-item
-                  button.btn.btn-block.btn-primary(
-                    :class='{disabled: isProcess}'
-                    @click='login'
-                  ) 로그인
+              //- .or-separator
+              //-   span.or-text OR
+              //- .form-warp
+              //-   .form-item
+              //-     input.form-control(
+              //-       type='text'
+              //-       placeholder='아이디'
+              //-       v-model='id'
+              //-       @input='inputChanged'
+              //-       @keyup.enter='login'
+              //-     )
+              //-   .form-item
+              //-     input.form-control(
+              //-       type='password'
+              //-       placeholder='비밀번호'
+              //-       v-model='password'
+              //-       @input='inputChanged'
+              //-       @keyup.enter='login'
+              //-     )
+              //-   .form-item
+              //-     p.login-error(:class='{ show: cannotLogin }') 아이디 혹은 비밀번호가 입력되지 않았습니다.
+              //-     p.login-error(:class='{ show: isLoginFailed }') 아이디 혹은 비밀번호를 확인해주세요.
+              //-   .form-item
+              //-     button.btn.btn-block.btn-primary(
+              //-       :class='{disabled: isProcess}'
+              //-       @click='login'
+              //-     ) 로그인
 </template>
 
 <script>
@@ -135,6 +135,12 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap'); 
+* {
+  font-family: 'Nanum Gothic', sans-serif;
+ 
+  
+}
 
 .container {
   width: 100%;
@@ -163,7 +169,9 @@ export default {
 .modal-dialog {
   position: relative;
   width: auto;
-  margin: 0.5rem;
+    margin: 0;
+    padding-top: 120px;
+    padding-bottom: 30px;
   pointer-events: none;
 }
 
@@ -420,7 +428,9 @@ button.close {
   }
   .modal-dialog {
     max-width: 500px;
-    margin: 1.75rem auto;
+    margin: 0;
+    padding-top: 120px;
+    padding-bottom: 30px;
   }
 }
 </style>
