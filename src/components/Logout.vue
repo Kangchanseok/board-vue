@@ -11,6 +11,7 @@ export default {
     var user = this.$store.state.account.user
 
     if (token) {
+      alert("로그아웃 합니다");
       token = null;
       user = null;
       this.setToken(token)

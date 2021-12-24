@@ -18,12 +18,12 @@ axios.defaults.baseURL = 'http://ec2-13-125-140-17.ap-northeast-2.compute.amazon
 
 
 
-
+require('dotenv').config();
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(naver, {
-  clientID: '30u79ppnoj', // client
-  key: 'JyC4UGuMcUZrG4iWOYWyV9WfS9dZM8izou4Ki452',
+  clientID: process.env.NAVER_MAP_ID, // client
+  key: process.env.NAVER_MAP_KEY,
   useGovAPI: false, // 공공클라우드 API
   subModules: '' // 서브 모듈 
 })
