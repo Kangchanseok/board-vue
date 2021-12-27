@@ -18,8 +18,8 @@
       <p>
          <span>Address</span>
           <ul>
-              <li class="list">서울특별시 강남구</li>
-              <li class="list">서초구 서초동 서초대로74길 33</li>
+              <li class="list">서울특별시 서초구</li>
+              <li class="list">서초동 서초대로74길 33</li>
               <li class="list">02-3486-3456</li>
               <li class="list">bitacademy@bit.co.kr</li>
               <li class="list google"><a href="https://www.google.com/maps/place/%EB%B9%84%ED%8A%B8%EA%B5%90%EC%9C%A1%EC%84%BC%ED%84%B0/@37.4945301,127.0275661,18.51z/data=!4m5!3m4!1s0x0:0x44f6db1c2b6c3bf7!8m2!3d37.4946287!4d127.0276197">View on Google Maps</a></li>
