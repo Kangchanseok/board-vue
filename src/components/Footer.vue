@@ -48,29 +48,6 @@
 <script>
 export default {
   name:"Footer",
-  // data(){
-  //   return {};
-  // },
-
-  // mounted(){
-  //   window.smoothscroll = () => {
-  //     let currentScroll = document.documentElement.scrollTop || document.body.scrollTop
-  //     if (currentScroll > 0) {
-  //       window.requestAnimationFrame(window.smoothscroll)
-  //       window.scrollTo(0, Math.floor(currentScroll - (currentScroll / 5)))
-  //     }
-  //   }
-  //   window.addEventListener('scroll', this.catchScroll)
-  // },
-  // destroyed () {
-  //   window.removeEventListener('scroll', this.catchScroll)
-  // },
-  // methods: {
-  //   backToTop(){
-  //     window.smoothscroll()
-  //     this.$emit('scrolled')
-  //   }      
-  // },
 
 }
 </script>

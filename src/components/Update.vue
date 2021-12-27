@@ -1,41 +1,55 @@
 <template>
-    <div>
-         <form class="vue-form" @submit.prevent="submit">
-
-
-
-    <fieldset>
-      <legend>회원탈퇴</legend>
-      <div>
-        <label class="label" for="name">이름</label>
-        <input type="text"  name="name" id="name" required="" v-model="name" readonly >
-      </div>
-      <!-- <div>
+  <div>
+    <form class="vue-form" @submit.prevent="submit">
+      <fieldset>
+        <legend>회원탈퇴</legend>
+        <div>
+          <label class="label" for="name">이름</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            required=""
+            v-model="name"
+            readonly
+          />
+        </div>
+        <!-- <div>
         <label class="label" for="idname">아이디</label>
         <input type="text" class="lock" name="idname" id="idname" required="" v-model="idname" readonly>
       </div> -->
-      <!-- <div>
+        <!-- <div>
         <label class="label" for="password">비밀번호</label>
         <input type="password" name="password" id="password" required="" v-model="password">
       </div> -->
-      <div>
-        <label class="label" for="regdate">가입일</label>
-        <input type="text" name="regdate" id="regdate" required="" v-model="regdate" readonly>
-      </div>
-      <div>
-        <label class="label" for="email">Email</label>
-        <input type="email" name="email" id="email" required="" readonly
-               :class="{ email , error: !email.valid }"
-               v-model="email.value">
-        <div class="error-message">
-          <p v-show="!email.valid">이메일 형식으로 기입해주세요!</p>
+        <div>
+          <label class="label" for="regdate">가입일</label>
+          <input
+            type="text"
+            name="regdate"
+            id="regdate"
+            required=""
+            v-model="regdate"
+            readonly
+          />
         </div>
-      <div>
-      </div>
+        <div>
+          <label class="label" for="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            required=""
+            readonly
+            :class="{ email, error: !email.valid }"
+            v-model="email.value"
+          />
+          <div class="error-message">
+            <p v-show="!email.valid">이메일 형식으로 기입해주세요!</p>
+          </div>
+          <div></div>
 
-
-
-        <!-- <h4>선택사항</h4>
+          <!-- <h4>선택사항</h4>
         <p class="select">
           <select class="budget" v-model="selection.member">
 						<option value="0">1층</option>
@@ -44,9 +58,9 @@
             <option value="4">4층</option>
 					</select>
         </p> -->
-      </div>
+        </div>
 
-      <!-- <div>
+        <!-- <div>
         <h4>선택사항</h4>
         <ul class="vue-form-list">
           <li>
@@ -67,7 +81,7 @@
         </ul>
       </div> -->
 
-      <!-- <div>
+        <!-- <div>
         <h4>Features</h4>
       </div>
       <div>
@@ -77,23 +91,21 @@
                   :maxlength="message.maxlength"></textarea>
         <span class="counter">{{ message.text.length }} / {{ message.maxlength }}</span>
       </div> -->
-      <div>
-        <!-- <input type="submit" value="회원탈퇴"> -->
-        <button class="drop" @click="goDrop">회원탈퇴</button>
-
-      </div>
-    </fieldset>
-  </form>
-        
-    </div>
+        <div>
+          <!-- <input type="submit" value="회원탈퇴"> -->
+          <button class="drop" @click="goDrop">회원탈퇴</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
 </template>
 
 <script>
-import { dropUser,dropUserToken } from '../service'
+import { dropUser, dropUserToken } from "../service";
 
 var emailRegExp = /^[a-zA-Z0-9.!#$%&'*+=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-export default{
-    data: function() {
+export default {
+  data: function() {
     return {
       name: this.$store.state.account.user.username,
       // idname: "수정 불가능",
@@ -102,34 +114,33 @@ export default{
       email: {
         value: this.$store.state.account.user.email,
         valid: true
-      },
-    //   selection: {
-    //     member: "0",
-    //     framework: "vue",
-    //     features: []
-    //   },
-    //   message: {
-    //     text: `내용을 입력하세요`,
-    //     maxlength: 255
-    //   },
-    //   submitted: false
+      }
+      //   selection: {
+      //     member: "0",
+      //     framework: "vue",
+      //     features: []
+      //   },
+      //   message: {
+      //     text: `내용을 입력하세요`,
+      //     maxlength: 255
+      //   },
+      //   submitted: false
     };
   },
- methods: {
-   async goDrop(){
-     if(confirm("정말 탈퇴하시겠습니까?") == true) {
-       // 확인누르면 여기서 await dropUser 함수 실행시켜서 db에서 회원정보 삭제하고 logout 페이지로 router push
-       const user_id = this.$store.state.account.user.userId
-        await dropUser({user_id});
-        await dropUserToken({user_id});
+  methods: {
+    async goDrop() {
+      if (confirm("정말 탈퇴하시겠습니까?") == true) {
+        // 확인누르면 여기서 await dropUser 함수 실행시켜서 db에서 회원정보 삭제하고 logout 페이지로 router push
+        const user_id = this.$store.state.account.user.userId;
+        await dropUser({ user_id });
+        await dropUserToken({ user_id });
         this.$router.push({
-        path: '/logout'
-      })
-     } else{
-       return false;
-     }
-     
-   },
+          path: "/logout"
+        });
+      } else {
+        return false;
+      }
+    },
     // submit form handler
     submit: function() {
       this.submitted = true;
@@ -385,22 +396,21 @@ header h1 {
   resize: vertical;
   overflow: auto;
 }
-.drop{
-   border: none;
+.drop {
+  border: none;
   background: #7bc4c4;
   border-radius: 0.25em;
   padding: 12px 20px;
   color: #ffffff;
-   font-weight: bold;
-  
+  font-weight: bold;
+
   cursor: pointer;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   appearance: none;
 }
-.drop :hover{
+.drop :hover {
   background: #42a2e1;
-
 }
 .vue-form input[type="submit"] {
   border: none;
@@ -426,7 +436,6 @@ header h1 {
   transform: scale(0.9);
 }
 .vue-form .error-message {
-  
   margin: 0px;
 }
 .vue-form .error-message p {
@@ -493,8 +502,7 @@ header h1 {
     transform: scale(0.8);
   }
 }
-.vue-form input[class="lock"]{
+.vue-form input[class="lock"] {
   background-color: rgb(218, 218, 218);
 }
-
 </style>

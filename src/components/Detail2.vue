@@ -155,6 +155,7 @@ export default {
       var check_hashname = [];
       var justcount = [];
       var countcheck = [];
+
       for (let i = 0; i < 25; i++) {
         if (this.hashs[i].clicked == true) {
           count += 1;
@@ -203,10 +204,6 @@ export default {
               countcheck.push(this.hashs2[f].hash_name);
             }
           }
-          console.log(countcheck);
-
-          // ret3 = [...new Set(this.hashsdata2.map(JSON.stringify))].map(JSON.parse)
-          // ret2 = ret3
 
           if (countcheck != null) {
             this.hashsdata2 = [];
@@ -226,7 +223,6 @@ export default {
             ret2 = ret3;
             console.log(ret2);
           }
-          // }
         }
         // 지역은 클릭해제된 상태, 가족끼리는 선택된 상태 -> else if문 사용
       }
@@ -239,7 +235,7 @@ export default {
       }
 
       if (ret3.length != 0) {
-        var test1 = new Set(ret2); // todo: detail3에서 지역 옮기고 중복태그 클릭했다가 해제시 에러 해결
+        var test1 = new Set(ret2);
         ret2 = [...test1];
         this.hashsdata = ret2;
         if (this.$store.state.account.user != null) {
@@ -291,7 +287,7 @@ export default {
 
       var ret2 = await selectHashName({ hash_name }); // 가족끼리 데이터 가져옴
       // hashsdata --> 지역해시태그 정보 담고있음
-      // hashs2 --> 친구끼리 ~~ 가족끼리 해시태그
+      // hashs2 --> 친구끼리, 가족끼리 등등 해시태그
       for (let i = 0; i < 25; i++) {
         // 클릭 검증
         if (this.hashs[i].clicked == true) {
@@ -337,14 +333,7 @@ export default {
             ret3 = [...new Set(this.hashsdata2.map(JSON.stringify))].map(
               JSON.parse
             );
-            console.log(ret3);
           }
-          // this.hashsdata2 = [] // 초기화
-          // for (let l = 0; l < ret2.data.length; l++) {
-          //     this.hashsdata2.push(ret2.data[l])
-          //     var cs = this.hashsdata2
-          //     ret3 = cs;
-          // }
         } else {
           // TODO: 되돌리기, 전체 렌더링 안됨
           this.hashsdata2 = [];
@@ -396,11 +385,8 @@ export default {
             console.log(this.$route.query.hash_name); // 처음에 선택한 가족끼리만 들어옴
             for (let b = 0; b < this.$route.query.hash_name.length; b++) {
               var test = this.$route.query.hash_name[b].hash_name.split(" ");
-              console.log(test);
               for (let c = 0; c < test.length; c++) {
-                console.log(ret2.data[c]);
                 this.hashsdata2.push(ret2.data[c]);
-                console.log(this.hashsdata2);
                 for (let d = 0; d < qureycheck_name.length; d++) {
                   if (test[c] == qureycheck_name[d]) {
                     check.push(this.$route.query.hash_name[b]);
@@ -409,7 +395,6 @@ export default {
               }
             }
             var connect = new Set(check);
-            console.log(connect);
             var commondata = [...connect];
             for (let z = 0; z < commondata.length; z++) {
               ret3.push(commondata[z]);
@@ -438,7 +423,6 @@ export default {
               }
             }
             var connect = new Set(check);
-            console.log(connect);
             var commondata = [...connect];
             for (let z = 0; z < commondata.length; z++) {
               ret3.push(commondata[z]);
@@ -458,47 +442,18 @@ export default {
           }
         }
       }
-      // TODO : 중복제거, 여기에는 없는데 서버파일에는 있네ㅋㅋㅋ
-      // 서버에서 실행해보고 에러나면 고치기
       EventBus.$emit("changePage3", ret3);
     },
 
     changeColor2(e) {
       var e2 = 0;
-      e2 = e - 26;
+      e2 = e - 26; // 해쉬태그 넣을때마다 고치기
       if (this.hashs2[e2].clicked == 0) {
         this.hashs2[e2].clicked = 1;
       } else {
         this.hashs2[e2].clicked = 0;
       }
-      // const count = true
-      // if (this.hashs2[e].clicked === true) {
-      //     this.hashs2[e].clicked = false
-      //     console.log(this.hashs2[e].clicked)
-      // } else {
-      //     for (let i = 0; i < 2; i++) {
-      //         this.hashs2[i].clicked = false
-      //     }
-      //     this.hashs2[e].clicked = true
-      //     console.log(this.hashs2[e].clicked)
-      // }
     }
-    // changePage11(){
-    //      findHashList().then(response => this.hashs = response.data);
-    // }
-
-    // async changePage(hash_name){
-    //     // this.$store.commit('choiceSearch', hash_name)
-    //     const ret = await selectHashName({hash_name})
-    //     this.$store.commit('choiceSearch', ret.data)
-    //     const test = this.$store.getters[sibal()]
-
-    // var ret2 = ret.data;
-    //  console.log(ret2);
-    // this.$store.commit('choiceSearch', hash_name)
-    // const test = this.$store.getters['justtest']
-
-    // }
   }
 };
 </script>

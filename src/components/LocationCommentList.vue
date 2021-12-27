@@ -1,16 +1,16 @@
 <template>
   <div>
     <div :key="item.comment_no" v-for="item in comments">
-      <LocationCommentListItem :commentObj="item"/>
+      <LocationCommentListItem :commentObj="item" />
     </div>
-    <LocationCommentCreate  :locaNo="locaNo" :reloadComments="reloadComments" />
+    <LocationCommentCreate :locaNo="locaNo" :reloadComments="reloadComments" />
   </div>
 </template>
 
 <script>
-import LocationCommentListItem from './LocationCommentListItem';
-import LocationCommentCreate from './LocationCommentCreate';
-import {findLocationComment} from '../service'
+import LocationCommentListItem from "./LocationCommentListItem";
+import LocationCommentCreate from "./LocationCommentCreate";
+import { findLocationComment } from "../service";
 
 export default {
   name: "LocationCommentList",
@@ -19,23 +19,22 @@ export default {
   },
   components: {
     LocationCommentListItem,
-    LocationCommentCreate,
+    LocationCommentCreate
   },
-  async created(){
-    const ret = await findLocationComment({loca_no: this.locaNo})
-    this.comments = ret.data
+  async created() {
+    const ret = await findLocationComment({ loca_no: this.locaNo });
+    this.comments = ret.data;
   },
   data() {
     return {
-      comments:[]
-    }
+      comments: []
+    };
   },
   methods: {
     async reloadComments() {
-      const ret = await findLocationComment({loca_no:this.locaNo})
+      const ret = await findLocationComment({ loca_no: this.locaNo });
       this.comments = ret.data;
     }
-    
   }
 };
 </script>

@@ -14,39 +14,40 @@
 </template>
 
 <script>
-// import NavBar from './NavBar'
-import Login from './Login'
-import { mapGetters, mapMutations } from 'vuex'
+import Login from "./Login";
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
-  // components에 NavBar 이썽ㅆ음
-  components: {  Login },
-  data () {
+  // components에 NavBar 있었음
+  components: { Login },
+  data() {
     return {
       isLoginModalOpen: false,
       isScrollTop: true
-    }
+    };
   },
-  created () {
-    window.addEventListener('scroll', e => { this.isScrollTop = window.scrollY === 0 })
+  created() {
+    window.addEventListener("scroll", e => {
+      this.isScrollTop = window.scrollY === 0;
+    });
   },
   methods: {
-    ...mapMutations(['setToken', 'setUser']),
-    openLoginModal () {
-      this.isLoginModalOpen = true
+    ...mapMutations(["setToken", "setUser"]),
+    openLoginModal() {
+      this.isLoginModalOpen = true;
     },
-    logout () {
-      this.setToken(null)
-      this.setUser(null)
-      alert('로그아웃되었습니다.')
-      if (this.$route.path !== '/') this.$router.push('/')
+    logout() {
+      this.setToken(null);
+      this.setUser(null);
+      alert("로그아웃되었습니다.");
+      if (this.$route.path !== "/") this.$router.push("/");
     }
   },
   computed: {
-    ...mapGetters(['token']),
-    stickyMode () {
-      return !(this.isScrollTop && this.$route.path === '/')
+    ...mapGetters(["token"]),
+    stickyMode() {
+      return !(this.isScrollTop && this.$route.path === "/");
     }
   }
-}
+};
 </script>

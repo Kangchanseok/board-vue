@@ -1,60 +1,71 @@
 <template>
-
-    <div class="form">
-      <div class="form-toggle"></div>
-      <div class="form-panel one">
-        <div class="form-header">
-          <h1>회원가입 페이지 입니다</h1>
-        </div>
-        <div class="form-content">
-
-          <form>
+  <div class="form">
+    <div class="form-toggle"></div>
+    <div class="form-panel one">
+      <div class="form-header">
+        <h1>회원가입 페이지 입니다</h1>
+      </div>
+      <div class="form-content">
+        <form>
           <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" required="required"/>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              required="required"
+            />
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" required="required"/>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required="required"
+            />
           </div>
           <div class="form-group">
             <label for="cpassword">Confirm Password</label>
-            <input type="password" id="cpassword" name="cpassword" required="required"/>
+            <input
+              type="password"
+              id="cpassword"
+              name="cpassword"
+              required="required"
+            />
           </div>
           <div class="form-group">
             <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" required="required"/>
+            <input type="email" id="email" name="email" required="required" />
           </div>
           <div class="form-group">
             <button type="submit">Register</button>
           </div>
-           <div class="form-group">
-            <button type="submit"><router-link to="/login">Cancle</router-link></button>
+          <div class="form-group">
+            <button type="submit">
+              <router-link to="/login">Cancle</router-link>
+            </button>
           </div>
-         
         </form>
       </div>
     </div>
-    </div>
-
+  </div>
 </template>
-
 
 <script>
 export default {
-  name:"Register",
+  name: "Register",
   date() {
-    return{}
+    return {};
   }
-  
-}
+};
 </script>
 
 <style scoped>
 .form {
   z-index: 10;
   position: relative;
-  background: #FFFFFF;
+  background: #ffffff;
   width: 600px;
   border-radius: 4px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
@@ -62,15 +73,13 @@ export default {
   margin: auto;
   top: 150px;
   margin-bottom: 300px;
-  
-  
 }
 .form-toggle {
   z-index: 10;
   position: absolute;
   top: 60px;
   right: 60px;
-  background: #FFFFFF;
+  background: #ffffff;
   width: 60px;
   height: 60px;
   border-radius: 100%;
@@ -80,7 +89,8 @@ export default {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-.form-toggle:before, .form-toggle:after {
+.form-toggle:before,
+.form-toggle:after {
   content: "";
   display: block;
   position: absolute;
@@ -106,12 +116,9 @@ export default {
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 0 20px;
-  
-   
 }
 .form-group:last-child {
   margin: 0;
-  
 }
 .form-group label {
   display: block;
@@ -124,8 +131,7 @@ export default {
   letter-spacing: 0.2em;
 }
 .two .form-group label {
-  color: #FFFFFF;
-  
+  color: #ffffff;
 }
 .form-group input {
   outline: none;
@@ -147,10 +153,10 @@ export default {
   color: rgba(0, 0, 0, 0.8);
 }
 .two .form-group input {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .two .form-group input:focus {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .form-group button {
   outline: none;
@@ -159,7 +165,7 @@ export default {
   border: 0;
   border-radius: 4px;
   padding: 12px 20px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: inherit;
   font-size: inherit;
   font-weight: 500;
@@ -169,10 +175,10 @@ export default {
 }
 .form-group button a {
   text-decoration: none;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .two .form-group button {
-  background: #FFFFFF;
+  background: #ffffff;
   color: #7bc4c4;
 }
 .form-group .form-remember {
@@ -181,7 +187,7 @@ export default {
   letter-spacing: 0;
   text-transform: none;
 }
-.form-group .form-remember input[type=checkbox] {
+.form-group .form-remember input[type="checkbox"] {
   display: inline-block;
   width: auto;
   margin: 0 10px 0 0;
@@ -194,8 +200,6 @@ export default {
 .form-panel {
   padding: 60px calc(5% + 60px) 60px 60px;
   box-sizing: border-box;
-  
-  
 }
 .form-header {
   margin: 0 0 40px;

@@ -1,39 +1,35 @@
 <template>
   <div class="detail3" style="position: relative;">
-    <div class="rela-block top-section grad-back" id="topSection" >
-        <div class="abs-cent-text top-text">
-            <h1 class="big-text">상세검색</h1>
-            <Search />
-        </div>
-        
+    <div class="rela-block top-section grad-back" id="topSection">
+      <div class="abs-cent-text top-text">
+        <h1 class="big-text">상세검색</h1>
+        <Search />
+      </div>
     </div>
-    
-  <Detail1 />
-  <Detail2 />
+
+    <Detail1 />
+    <Detail2 />
   </div>
 </template>
 
 <script>
-import Search from '@/components/Search'
-import Detail1 from '@/components/Detail1';
-import Detail2 from '@/components/Detail2';
+import Search from "@/components/Search";
+import Detail1 from "@/components/Detail1";
+import Detail2 from "@/components/Detail2";
 export default {
   name: "Detail3",
   components: {
     Search,
     Detail1,
-    Detail2,
-  },
+    Detail2
+  }
 };
 </script>
 
-
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap'); 
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
 * {
-  font-family: 'Nanum Gothic', sans-serif;
- 
-  
+  font-family: "Nanum Gothic", sans-serif;
 }
 /** 메인 이미지 설정*/
 .rela-block {
@@ -56,12 +52,12 @@ export default {
   line-height: 28px;
 }
 .big-text {
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: "Nanum Gothic", sans-serif;
   text-transform: uppercase;
   font-size: 20px;
   font-weight: bold;
   line-height: 50px;
-  /* letter-spacing: 20px; */ 
+  /* letter-spacing: 20px; */
   margin-bottom: -30px;
 }
 .abs-cent-text {
@@ -77,9 +73,9 @@ export default {
   margin-bottom: 0;
   
 } */
-@media (min-width: 1801px) and (max-width: 2649px){ 
-.top-section {
-  height: 38vh;
-}
+@media (min-width: 1801px) and (max-width: 2649px) {
+  .top-section {
+    height: 38vh;
+  }
 }
 </style>

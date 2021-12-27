@@ -2,22 +2,22 @@
 </template>
 
 <script>
-import { mapMutations, mapActions } from 'vuex'
+import { mapMutations, mapActions } from "vuex";
 
 export default {
-  async created () {
-    const token = this.$route.query.token
-    console.log('token', token)
-    
+  async created() {
+    const token = this.$route.query.token;
+    console.log("token", token);
+
     if (token) {
-      this.setToken(token)
-      this.fetchUser()
+      this.setToken(token);
+      this.fetchUser();
     }
-    this.$router.replace('/')
+    this.$router.replace("/");
   },
   methods: {
-    ...mapActions(['fetchUser']),
-    ...mapMutations(['setToken'])
+    ...mapActions(["fetchUser"]),
+    ...mapMutations(["setToken"])
   }
-}
+};
 </script>

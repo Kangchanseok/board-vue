@@ -16,130 +16,101 @@
                       :style='{width: social.width, height: social.height}'
                     )
                     | {{ social.comment }}
-              //- .or-separator
-              //-   span.or-text OR
-              //- .form-warp
-              //-   .form-item
-              //-     input.form-control(
-              //-       type='text'
-              //-       placeholder='아이디'
-              //-       v-model='id'
-              //-       @input='inputChanged'
-              //-       @keyup.enter='login'
-              //-     )
-              //-   .form-item
-              //-     input.form-control(
-              //-       type='password'
-              //-       placeholder='비밀번호'
-              //-       v-model='password'
-              //-       @input='inputChanged'
-              //-       @keyup.enter='login'
-              //-     )
-              //-   .form-item
-              //-     p.login-error(:class='{ show: cannotLogin }') 아이디 혹은 비밀번호가 입력되지 않았습니다.
-              //-     p.login-error(:class='{ show: isLoginFailed }') 아이디 혹은 비밀번호를 확인해주세요.
-              //-   .form-item
-              //-     button.btn.btn-block.btn-primary(
-              //-       :class='{disabled: isProcess}'
-              //-       @click='login'
-              //-     ) 로그인
 </template>
 
 <script>
-import $ from '@/utils'
-import accountApi from '@/api/account'
-import { mapActions, mapMutations } from 'vuex'
+import $ from "@/utils";
+import accountApi from "@/api/account";
+import { mapActions, mapMutations } from "vuex";
 
 export default {
-  props: ['isOpen'],
-  data () {
+  props: ["isOpen"],
+  data() {
     return {
-      id: '',
-      password: '',
+      id: "",
+      password: "",
       isProcess: false,
       cannotLogin: false,
       isLoginFailed: false,
       socials: [
         {
-          socialType: 'google',
-          src: $.getSocialImage('google'),
-          width: '32px',
-          height: '32px',
-          comment: '구글 로그인'
+          socialType: "google",
+          src: $.getSocialImage("google"),
+          width: "32px",
+          height: "32px",
+          comment: "구글 로그인"
         },
         {
-          socialType: 'facebook',
-          src: $.getSocialImage('facebook'),
-          width: '32px',
-          height: '32px',
-          comment: '페이스북 로그인'
+          socialType: "facebook",
+          src: $.getSocialImage("facebook"),
+          width: "32px",
+          height: "32px",
+          comment: "페이스북 로그인"
         },
         {
-          socialType: 'naver',
-          src: $.getSocialImage('naver'),
-          width: '32px',
-          height: '32px',
-          comment: '네이버 로그인'
+          socialType: "naver",
+          src: $.getSocialImage("naver"),
+          width: "32px",
+          height: "32px",
+          comment: "네이버 로그인"
         },
         {
-          socialType: 'kakao',
-          src: $.getSocialImage('kakao'),
-          width: '32px',
-          height: '32px',
-          comment: '카카오 로그인'
+          socialType: "kakao",
+          src: $.getSocialImage("kakao"),
+          width: "32px",
+          height: "32px",
+          comment: "카카오 로그인"
         }
       ]
-    }
+    };
   },
   methods: {
-    ...mapActions(['fetchUser']),
-    ...mapMutations(['setToken']),
-    login () {
-      if (this.isProcess) return
-      if (this.id.trim() === '' || this.password.trim() === '') {
-        this.cannotLogin = true
-        return
+    ...mapActions(["fetchUser"]),
+    ...mapMutations(["setToken"]),
+    login() {
+      if (this.isProcess) return;
+      if (this.id.trim() === "" || this.password.trim() === "") {
+        this.cannotLogin = true;
+        return;
       }
       accountApi.login(
         {
           id: this.id,
           password: this.password,
-          socialType: 'LOCAL'
+          socialType: "LOCAL"
         },
         body => {
-          this.setToken(body.token)
-          this.id = this.password = ''
-          this.isProcess = false
+          this.setToken(body.token);
+          this.id = this.password = "";
+          this.isProcess = false;
           this.fetchUser(() => {
-            this.$emit('onCloseModal')
-          })
+            this.$emit("onCloseModal");
+          });
         },
         err => {
           if (err.response.data.status === 401) {
-            this.isLoginFailed = true
+            this.isLoginFailed = true;
           }
         }
-      )
+      );
     },
-    inputChanged () {
-      if (!this.cannotLogin) return
-      if (this.id.trim() !== '' && this.password.trim() !== '') {
-        this.cannotLogin = false
+    inputChanged() {
+      if (!this.cannotLogin) return;
+      if (this.id.trim() !== "" && this.password.trim() !== "") {
+        this.cannotLogin = false;
       }
     },
-    socialLoginUrl (socialType) {
-      return $.getSocialLoginUrl(socialType)
+    socialLoginUrl(socialType) {
+      return $.getSocialLoginUrl(socialType);
     }
   }
-}
+};
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap'); 
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
 * {
-  font-family: 'Nanum Gothic', sans-serif;
- 
-  
+  font-family: "Nanum Gothic", sans-serif;
 }
 
 .container {
@@ -169,9 +140,9 @@ export default {
 .modal-dialog {
   position: relative;
   width: auto;
-    margin: 0;
-    padding-top: 120px;
-    padding-bottom: 30px;
+  margin: 0;
+  padding-top: 120px;
+  padding-bottom: 30px;
   pointer-events: none;
 }
 
@@ -199,19 +170,19 @@ export default {
 }
 
 .modal-header {
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-    -ms-flex-align: start;
-    -webkit-box-align: start;
-    align-items: flex-start;
-    -ms-flex-pack: justify;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    padding: 1rem 1rem;
-    border-bottom: 1px solid #dee2e6;
-    border-top-left-radius: calc(0.3rem - 1px);
-    border-top-right-radius: calc(0.3rem - 1px);
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-align: start;
+  -webkit-box-align: start;
+  align-items: flex-start;
+  -ms-flex-pack: justify;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  border-bottom: 1px solid #dee2e6;
+  border-top-left-radius: calc(0.3rem - 1px);
+  border-top-right-radius: calc(0.3rem - 1px);
 }
 
 .modal-title {
@@ -242,7 +213,7 @@ button.close {
   line-height: 1;
   color: #000;
   text-shadow: 0 1px 0 #fff;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .show {
@@ -252,10 +223,10 @@ button.close {
   list-style: none;
 }
 .social_login {
-    height: 32px;
-    float: left;
-    margin-top: 5.2px;
-    margin-left: 10px;
+  height: 32px;
+  float: left;
+  margin-top: 5.2px;
+  margin-left: 10px;
 }
 .social_btn:hover {
   color: #2098f3;
@@ -298,33 +269,36 @@ button.close {
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
-  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -webkit-transition: border-color 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
 }
 
 .socal_login_container {
-  text-align: center
+  text-align: center;
 }
 
 .or-text {
-    position: absolute;
-    left: 46%;
-    top: 0;
-    background: #fff;
-    padding: 10px;
-    color: rgba(0,0,0,.45);
+  position: absolute;
+  left: 46%;
+  top: 0;
+  background: #fff;
+  padding: 10px;
+  color: rgba(0, 0, 0, 0.45);
 }
 
 .or-separator {
-    border-bottom: 1px solid #eee;
-    padding: 10px 0;
-    position: relative;
-    display: block;
-    margin-top: 20px;
-    margin-bottom: 30px;
-    font-size: 1em;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+  position: relative;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 1em;
 }
 
 .form-item {
@@ -348,10 +322,16 @@ button.close {
   font-size: 1rem;
   line-height: 1.5;
   border-radius: 0.25rem;
-  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -webkit-transition: color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
 }
 
 .login-error {
