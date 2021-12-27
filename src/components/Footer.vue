@@ -7,7 +7,8 @@
               <li class="list"><a href="/">HOME</a></li>
               <li class="list"><a href="/detail3">상세검색</a></li>
               <li class="list"><a href="/board/free">고객센터</a></li>
-              <li class="list"><a href="/login">로그인</a></li>
+              <li v-if="this.$store.state.account.token == null" class="list"><a href="/login">로그인</a></li>
+              <li v-if="this.$store.state.account.token != null" class="list"><a href="/logout">로그아웃</a></li>
               <li class="list"><a href="/mypage">마이페이지</a></li>
           </ul>
 
